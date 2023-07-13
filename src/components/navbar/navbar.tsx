@@ -10,8 +10,8 @@ const Navbar = () => {
             <li><Link href="/explore">Explore</Link></li>
         </ul>
         <div>
-        <button className='mr-2 rounded-3xl px-1 tracking-wider '><Link href='/signin'>SignIn</Link></button>
-        <button className='bg-red-400 px-4 rounded-3xl text-white py-1 tracking-wider'><Link href='/signup'>SignUp</Link></button>
+        <button className='mr-2 rounded-3xl px-4 py-1 tracking-widest border-2 border-black '><Link href='/signin'>Sign In</Link></button>
+        <button className='bg-red-500 px-4 rounded-3xl text-white py-1.5 tracking-wider'><Link href='/signup'>Sign Up</Link></button>
         </div>
     </nav>
   )
