@@ -19,9 +19,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```
 git clone https://github.com/sital002/foodhub.git
 cd foodhub
-git checkout -b branch branchName
+git checkout -b branch "branchName"
 //Make changes and commit those changes 
 git commit -m "comiit message"
+git push origin "branchName"
 Create a pull request 
 ```
 
