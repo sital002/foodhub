@@ -6,7 +6,7 @@ const Wrapper = ({
     children: React.ReactNode
   }) => {
   return (
-    <div className='max-w-5xl w-full mx-auto my-4 px-2'>{children}</div>
+    <div className='max-w-6xl w-full mx-auto my-4 px-2'>{children}</div>
   )
 }
 
