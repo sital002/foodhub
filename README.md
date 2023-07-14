@@ -16,12 +16,14 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Start Contributing
+#### Fork the repository and Clone the repository.
+
 ```
-git clone https://github.com/sital002/foodhub.git
 cd foodhub
-git checkout -b branch branchName
-//Make changes and commit those changes 
-git commit -m "comiit message"
+git checkout -b "branchName"
+// Make changes and commit those changes 
+git commit -m "commit message"
+git push origin "branchName"
 Create a pull request 
 ```
 
