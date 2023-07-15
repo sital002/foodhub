@@ -17,14 +17,14 @@ const Details = () => {
                 <BsStarHalf className='text-orange-500 ml-3 text-xl'/>
                 </div>
                 
-                <p className="font-bold text-[15px] text-red-500">Old Price: <span className="text-sm">Rs 1200</span></p>
+                <p className="font-bold text-[10px] text-red-500">Old Price: <span className="text-sm">Rs 1200</span></p>
                 <p className="font-bold text-[15px] my-1">New Price: <span className="text-sm">Rs 900</span> <span className="text-green-500 text-sm">(-5%)</span></p>
                 <div className="flex text-3xl my-5 border border-gray-500 w-[100px] px-2">
                 <button>+</button>
                 <h1 className="mx-4 text-center">1</h1>
                 <button>-</button>
                 </div>
-                <button className="bg-red-500 cursor-pointer p-3 text-white text-xl rounded-3xl">Add to Cart</button>
+                <button className="bg-red-500 cursor-pointer px-3 py-2 text-white text-base rounded-3xl">Add to Cart</button>
             </div>
         </div>
     )
