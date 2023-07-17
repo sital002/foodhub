@@ -1,15 +1,15 @@
 "use client"
 
-import CategoryCard from "@/components/category-card/category-card";
-import Wrapper from "@/components/wrapper/wrapper";
+import CategoryCard from "@components/category-card/category-card";
+import Wrapper from "@components/wrapper/wrapper";
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import backeryImg from '../assets/bakery.png';
-import heroSectionImg from '../assets/hero-section-image.png';
-import nonVegImg from '../assets/non-veg-resturant.png'
-import vegImg from '../assets/veg-resturant.png'
-import ProductCard from "@/components/product-card/product-card";
+import backeryImg from '@assets/bakery.png';
+import heroSectionImg from '@assets/hero-section-image.png';
+import nonVegImg from '@assets/non-veg-resturant.png'
+import vegImg from '@assets/veg-resturant.png'
+import ProductCard from "@components/product-card/product-card";
 
 
 export default function Home() {
