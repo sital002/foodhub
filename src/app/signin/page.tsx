@@ -24,7 +24,6 @@ const SignIn = () => {
         <h1 className="text-center text-3xl mb-5 font-semibold">Sign In</h1>
         <input
           placeholder="Email"
-          name="email"
           className="border-b-2 h-[40px] outline-none focus:placeholder-transparent focus:border-b-red-500 duration-100 transition-all  w-[90%] my-2"
           type="text"
           {...register("email", {
@@ -38,10 +37,9 @@ const SignIn = () => {
             }
           })}
         />
-        <span className="text-red-500 text-sm mr-[230px] mt-[-10px]">{errors?.email?.message}</span>
+        <span className="text-red-500 text-sm mr-[220px] mt-[-10px]">{errors?.email?.message}</span>
         <input
           placeholder="Password"
-          name="password"
           className="border-b-2 h-[40px] focus:placeholder-transparent focus:border-b-red-500 outline-none duration-100 transition-all w-[90%] my-2"
           type="password"
           {...register("password", {
