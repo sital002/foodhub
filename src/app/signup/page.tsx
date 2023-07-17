@@ -25,22 +25,18 @@ const SignIn = () => {
         <h1 className="text-center text-3xl mb-5 font-semibold">Sign Up</h1>
         <input
           placeholder="Username"
-          name="username"
+          name='username'
           className="border-t-0 border-l-0 border-r-0 border-b-2 p-1 h-[40px] ou outline-none focus:placeholder-transparent w-[90%] my-2 pl-2 focus:border-b-red-500 transition-all duration-100"
           type="text"
           {...register('username', {
             required: {
               value: true,
-              message: (
-                <p className="text-red-500 text-sm mr-[200px] mt-[-10px]">
-                  username is missing
-                </p>
-              ),
+              message: "username is missing",
             }
             
           })}
         />
-        {errors?.username?.message}
+        <span className="text-red-500 text-sm mr-[200px] mt-[-10px] inline">{errors?.username?.message}</span>
         <input
           placeholder="Email"
           name="email"
@@ -49,19 +45,16 @@ const SignIn = () => {
           {...register('email', {
             required: {
               value: true,
-              message: 
-                <p className="text-red-500 text-sm mr-[230px] mt-[-10px]">
-                  email is missing
-                </p>
+              message: "email is missing"
               ,
             },
             pattern: {
               value: /^.*@.*$/,
-              message: <p className="text-red-500 text-sm mr-[215px] mt-[-10px]">invalid email format</p>,
+              message: "invalid email format"
             },
           })}
         />
-        {errors?.email?.message}
+        <span className="text-red-500 text-sm mr-[215px] mt-[-10px] inline">{errors?.email?.message}</span>
         <input
           placeholder="Password"
           name="password"
@@ -70,15 +63,11 @@ const SignIn = () => {
           {...register('password', {
             required: {
               value: true,
-              message: (
-                <p className="text-red-500 text-sm mr-[200px] mt-[-10px]">
-                  password is missing
-                </p>
-              ),
+              message: "password is missing"
             },
           })}
         />
-        {errors?.password?.message}
+        <span className="text-red-500 text-sm mr-[200px] mt-[-10px] inline">{errors?.password?.message}</span>
         <button className="w-[90%] h-[40px] rounded-md cursor-pointer bg-red-500 text-white my-3">
           Sign Up
         </button>

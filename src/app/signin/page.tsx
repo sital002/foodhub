@@ -30,15 +30,15 @@ const SignIn = () => {
           {...register("email", {
             required: {
               value: true,
-              message: <p className="text-red-500 text-sm mr-[230px] mt-[-10px]">email is missing</p>
+              message: "email is missing"
             },
             pattern: {
               value: /^.*@.*$/,
-              message: <p className="text-red-500 text-sm mr-[215px] mt-[-10px]">invalid email format</p>,
+              message: "invalid email format"
             }
           })}
         />
-        {errors?.email?.message}
+        <span className="text-red-500 text-sm mr-[230px] mt-[-10px]">{errors?.email?.message}</span>
         <input
           placeholder="Password"
           name="password"
@@ -47,11 +47,11 @@ const SignIn = () => {
           {...register("password", {
             required: {
               value: true,
-              message: <p className="text-red-500 text-sm mr-[200px] mt-[-10px] inline">password is missing</p>
+              message: "password is missing"
             }
           })}
         />
-        {errors?.password?.message}
+        <span className="text-red-500 text-sm mr-[200px] mt-[-10px] inline">{errors?.password?.message}</span>
         <button className="w-[90%] h-[40px] rounded-md cursor-pointer bg-red-500 text-white my-3">Sign In</button>
         <a className="text-sm text-blue-500 my-5" href="">
           Having trouble logging in?
