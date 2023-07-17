@@ -3,7 +3,7 @@ import { BsStarFill,BsStarHalf } from 'react-icons/bs';
 
 const Details = () => {
     return (
-        <div className="flex justify-center items-center border-2 p-4 border-red-500 shadow-md shadow-red-50 w-[1000px] mt-10 ml-10 h-auto">
+        <div className="flex justify-center items-center border-2 p-4 border-red-500 shadow-md shadow-red-50 w-[1000px] mt-10 ml-10 h-auto ">
             <div>
                 <img className="h-[300px]" src="https://th.bing.com/th/id/R.c5de0c118d5fb1d8d23ece32716aa979?rik=l0gqZHQMZgWRAg&riu=http%3a%2f%2fpurepng.com%2fpublic%2fuploads%2flarge%2fpurepng.com-fried-chickenfried-chickenchickendishfried-1411527419655mzrds.png&ehk=WS8HkMEBMrytjuOCUyC7xT1gjxzyJn%2bAWv9%2f9Vp79xk%3d&risl=1&pid=ImgRaw&r=0" alt="" />
             </div>
