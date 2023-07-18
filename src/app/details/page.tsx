@@ -13,14 +13,6 @@ const Details = () => {
                 <img className="h-[300px]" src="https://th.bing.com/th/id/R.c5de0c118d5fb1d8d23ece32716aa979?rik=l0gqZHQMZgWRAg&riu=http%3a%2f%2fpurepng.com%2fpublic%2fuploads%2flarge%2fpurepng.com-fried-chickenfried-chickenchickendishfried-1411527419655mzrds.png&ehk=WS8HkMEBMrytjuOCUyC7xT1gjxzyJn%2bAWv9%2f9Vp79xk%3d&risl=1&pid=ImgRaw&r=0" alt="" />
             </div>
             <div className=" ml-20">
-                <h1 className="text-3xl underline font-bold">Murga Fry</h1>
-                <p className="bg-blue-500 text-white px-2 rounded-md my-4 w-fit">Baishnab Resturant</p>
-                <div className='flex my-4'>
-                <BsStarFill className='text-orange-500 ml-3 text-xl'/>
-                <BsStarFill className='text-orange-500 ml-3 text-xl'/>
-                <BsStarFill className='text-orange-500 ml-3 text-xl'/>
-                <BsStarHalf className='text-orange-500 ml-3 text-xl'/>
-                </div>
                 <div >
                     <h1 className="text-3xl font-bold">Murga Fry</h1>
                     <p className="bg-blue-500 text-white px-2 rounded-md my-3 w-fit cursor-pointer">Baishnab Resturant</p>
@@ -35,7 +27,7 @@ const Details = () => {
                     <div className="flex  my-1 px-2 h-9">
                         <button className='px-3 bg-gray-400 mr-1 rounded-md'>+</button>
                         {/* <span className="mx-4 text-center">1</span> */}
-                        <input type="text" className='w-[30px] border-2 border-b-slate-950 px-2 py-1' />
+                        <input type="text" className='w-[30px] border-2 border-black px-2 py-1' />
                         <button className='px-3 bg-gray-400 ml-1 rounded-md'>-</button>
                     </div>
                     <button className="bg-red-500 cursor-pointer px-2 py-2 text-white rounded-3xl">Add to Cart</button>

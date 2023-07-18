@@ -29,11 +29,11 @@ const SignIn = () => {
           {...register("email", {
             required: {
               value: true,
-              message: "email is missing"
+              message: "Email is required"
             },
             pattern: {
               value: /^.*@.*$/,
-              message: "invalid email format"
+              message: "Invalid email format"
             }
           })}
         />
@@ -45,7 +45,7 @@ const SignIn = () => {
           {...register("password", {
             required: {
               value: true,
-              message: "password is missing"
+              message: "Password is required"
             }
           })}
         />
