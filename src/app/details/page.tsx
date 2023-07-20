@@ -8,14 +8,6 @@ import { useState } from 'react';
 
 const Details = () => {
     const [quantity, setQuantity] = useState<Number>(1);
-    //  fetch('/api/productdetail').then(res => res.json()).then(res => console.log());
-     fetch("/api/auth",{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json",
-        },
-        body:JSON.stringify({name:"sagar",password:"sagar"}),
-     }).then(res => res.json()).then(res => console.log(res));
     return (
         <Wrapper>
             <div className="md:flex flex-row overflow-hidden">
