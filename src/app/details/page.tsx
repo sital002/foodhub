@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 
 const Details = () => {
-    const [quantity, setQuantity] = useState<Number>(1)
+    const [quantity, setQuantity] = useState<Number>(1);
     return (
         <Wrapper>
             <div className="md:flex flex-row overflow-hidden">
