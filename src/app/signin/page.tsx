@@ -1,6 +1,8 @@
 'use client'
 
+import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 interface FormData {
   email: string;
@@ -19,6 +21,7 @@ const SignIn = () => {
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit(getFormData)}>
       <div className="border-1 border-gray-500 shadow-md shadow-black min-h-[450px] w-[380px] rounded-md py-4 px-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <h1 className="text-center text-3xl mb-5 font-semibold">Sign In</h1>
@@ -63,14 +66,17 @@ const SignIn = () => {
           })}
         />
         <span className="text-red-500 text-sm">{errors?.password?.message}</span>
-        <button className="w-full h-[40px] rounded-md cursor-pointer bg-red-500 text-white my-3 mx-auto">Sign In</button>
-        <button className="w-full h-[40px] rounded-md cursor-pointer text-black my-3 border">Sign in with Google</button>
+        <button type="submit" className="w-full h-[40px] rounded-md cursor-pointer bg-red-500 text-white my-3 mx-auto">Sign In</button>
+        <button type="button" className="w-full h-[40px] rounded-md cursor-pointer text-black my-3 border" onClick={()=>signIn("github",{callbackUrl:"http://localhost:3000"})}>Sign in with Github</button>
+        {/* <Link href={"/api/auth/signin"}><button className="w-full h-[40px] rounded-md cursor-pointer text-black my-3 border" >Sign in with Other Options</button></Link> */}
         <a className="text-sm text-blue-500 my-5" href="">
           Having trouble logging in?
         </a>
-        <button className="w-full rounded-md cursor-pointer border h-[40px]">Sign Up</button>
+        <Link href={"/signup"}><button className= "w-full rounded-md cursor-pointer border h-[40px]">Sign Up</button></Link>
       </div>
     </form>
+    </>
+
   );
 };
 
