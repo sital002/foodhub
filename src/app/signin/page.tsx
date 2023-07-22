@@ -68,7 +68,7 @@ const SignIn = () => {
         />
         <span className="text-red-500 text-sm">{errors?.password?.message}</span>
         <button type="submit" className="w-full h-[40px] rounded-md cursor-pointer bg-red-500 text-white my-3 mx-auto">Sign In</button>
-        <button type="button" className="w-full h-[40px] rounded-md cursor-pointer text-black my-3 border" onClick={()=>signIn("github")}>Sign in with Github</button>
+        <button type="button" className="w-full h-[40px] rounded-md cursor-pointer text-black my-3 border" onClick={()=>signIn("github",{redirect:true,callbackUrl:process.env.NEXT_PUBLIC_BASE_URL})}>Sign in with Github</button>
         {/* <Link href={"/api/auth/signin"}><button className="w-full h-[40px] rounded-md cursor-pointer text-black my-3 border" >Sign in with Other Options</button></Link> */}
         <a className="text-sm text-blue-500 my-5" href="">
           Having trouble logging in?
