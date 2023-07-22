@@ -1,6 +1,7 @@
 "use client"
 import Link from 'next/link'
-import { useSession, signOut } from "next-auth/react"
+import { useSession, signOut, signIn } from "next-auth/react"
+import Image from 'next/image'
 
 const Navbar = () => {
   const { data: session, status } = useSession()
@@ -18,18 +19,16 @@ const Navbar = () => {
           {
             status === "authenticated" ? (
               <div className='flex justify-center items-center gap-3'>
-                <img src={session?.user?.image || ""} className='w-10 h-10 rounded-full' alt={session.user?.name || ""}/>
-                <button onClick={() => signOut()} className='bg-red-500 px-4 rounded-3xl text-white py-1.5 tracking-wider'>Sign Out</button>
+                <Image src={session?.user?.image || ""} className='w-7 h-7 rounded-full' alt={session.user?.name || ""} height={30} width={30}/>
+                <button onClick={() => signOut()} className='bg-red-500 px-4 rounded-3xl text-white py-1 tracking-wider'>Sign Out</button>
               </div>
             ) : (
               <div className='flex justify-center items-center gap-3'>
-                <button className='mr-2 rounded-3xl px-4 py-1 tracking-widest border-2 '><Link href='/signin'>Sign In</Link></button>
-                <button className='bg-red-500 px-4 rounded-3xl text-white py-1.5 tracking-wider'><Link href='/signup'>Sign Up</Link></button>
+                <button className='mr-2 rounded-3xl px-4 py-1 tracking-widest border-2 bg-red-500 text-white' onClick={()=>signIn("github",{redirect:true,callbackUrl:process.env.NEXT_PUBLIC_BASE_URL})}>Sign In</button>
+                {/* <button className='bg-red-500 px-4 rounded-3xl text-white py-1.5 tracking-wider'><Link href='/signup'>Sign Up</Link></button> */}
               </div>
             )
           }
-        {/* <button className='mr-2 rounded-3xl px-4 py-1 tracking-widest border-2 '><Link href='/signin'>Sign In</Link></button> */}
-        {/* <button className='bg-red-500 px-4 rounded-3xl text-white py-1.5 tracking-wider'><Link href='/signup'>Sign Up</Link></button> */}
         </div>
     </nav>
   )
