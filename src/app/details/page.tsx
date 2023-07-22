@@ -39,8 +39,6 @@ const Details = () => {
                 <ProductCard />
                 <ProductCard />
                 <ProductCard />
-                <ProductCard />
-                <ProductCard />
             </div>
         </Wrapper>
 
