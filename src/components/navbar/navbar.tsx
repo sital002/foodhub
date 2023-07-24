@@ -4,6 +4,9 @@ import { useSession, signOut, signIn } from "next-auth/react"
 import Image from 'next/image'
 
 import {AiOutlineShoppingCart} from 'react-icons/ai'
+import CartBox from '@components/cart-box/cart-box'
+
+
 const Navbar = () => {
   const { data: session, status } = useSession()
 
@@ -20,11 +23,13 @@ const Navbar = () => {
         {
           status === "authenticated" ? (
             <div className='flex justify-center items-center gap-3'>
-              <div className='cursor-pointer text-3xl ml-1 relative'>
+              <div className='relative group'>
+              <div className='cursor-pointer text-3xl ml-1 bg-red-400'>
               <AiOutlineShoppingCart />
               </div>
+              <CartBox/>
+              </div>
               <Image src={session?.user?.image || ""} className='w-7 h-7 rounded-full' alt={session.user?.name || ""} height={30} width={30} />
-              {/* <span className='text-sm'>{session?.user?.name || ""}</span> */}
               <button onClick={() => signOut()} className='bg-red-500 px-4 rounded-3xl text-white py-1 tracking-wider'>Sign Out</button>
             </div>
           ) : (
