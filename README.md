@@ -30,3 +30,11 @@ git push origin "branchName"
 Create a pull request 
 ```
 
+
+#### Environment Variables:
+NEXT_AUTH="" \
+GITHUB_SECRET="" \
+GITHUB_ID="" \
+NEXT_PUBLIC_URL=""
+
+
