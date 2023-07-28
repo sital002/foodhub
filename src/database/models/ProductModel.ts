@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const ProductSchmea = new mongoose.Schema({
-  name: {
+  productName: {
     type: String,
     required: [true, "Product Name is required"],
   },
@@ -12,15 +12,12 @@ const ProductSchmea = new mongoose.Schema({
     type: Number,
     required: [true, "Price is reqiured"],
   },
-  stock: {
-    type: Number,
-    required: [true, "Stock is required"],
-  },
-  image: 
-    {
-      public_id: String,
-      url: String,
-    },
+  images: [
+      {
+        public_id: String,
+        url: String,
+      }
+    ],
   rating: {
     type: Number,
     default: 0,
