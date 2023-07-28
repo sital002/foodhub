@@ -3,7 +3,7 @@ import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 
 // Initialize once (at the start of your app).
-const uploader = Uploader({ apiKey: "public_kW15bZL7dh2LDYqbd3hs5ftM6PGY" }); 
+const uploader = Uploader({ apiKey: process.env.FILEUPLOAD_API_KEY || "" }); 
 
 const FileUploader = () => (
   <UploadButton uploader={uploader}
