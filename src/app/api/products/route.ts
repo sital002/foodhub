@@ -3,10 +3,9 @@ import Product  from "@/database/models/ProductModel";
 import { NextRequest, NextResponse } from "next/server";
 
 interface ProductType  {
-    name ?: string;
+    productName ?: string;
     price ?: number;
     description ?: string;
-    stock ?: number;
 }
 
 export  async function GET(request : NextRequest){
@@ -18,15 +17,15 @@ export  async function GET(request : NextRequest){
 
 export async function POST(request : NextRequest){
     try{
-
         const data = await request.json() as ProductType;
+        console.log(data)
         if(!data) return  NextResponse.json({message : "No data provided"}, {status : 400})
-        if(!data.name) return NextResponse.json({message : "No name provided"}, {status : 400})
+        if(!data.productName) return NextResponse.json({message : "No name provided"}, {status : 400})
         if(!data.price) return NextResponse.json({message : "No price provided"}, {status : 400})  
         if(!data.description) return NextResponse.json({message : "No description provided"}, {status : 400})
-        if(!data.stock) return NextResponse.json({message : "No stock provided"}, {status : 400})
         await connectToDB();
-        const newProduct = await Product.create(data);
+        const {productName, price, description} = data;
+        const newProduct = await new Product({productName:productName, price:Number(price), description});
         return NextResponse.json(newProduct, {status : 201})
     }
     catch(err : any){

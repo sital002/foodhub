@@ -9,9 +9,6 @@ import ProductCard from "@components/product-card/product-card";
 import HeroSection from "@components/hero-section/hero-section";
 
 export default   function Home() {
-     
-
-
 
   return (
     <main>
