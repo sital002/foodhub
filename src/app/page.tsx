@@ -4,7 +4,6 @@ import Wrapper from "@components/wrapper/wrapper";
 import backeryImg from '@assets/bakery.png';
 import nonVegImg from '@assets/non-veg-resturant.png'
 import vegImg from '@assets/veg-resturant.png'
-import ProductCard from "@components/product-card/product-card";
 import HeroSection from "@components/hero-section/hero-section";
 import PopularProducts from "@/components/popular-products/popular-products";
 

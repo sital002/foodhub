@@ -3,11 +3,21 @@ import nonVegImg from "@assets/non-veg-resturant.png"
 import Wrapper from '@components/wrapper/wrapper';
 import PopularProducts from '@/components/popular-products/popular-products';
 import Product from '@/database/models/ProductModel';
-import { ProductType } from '@/app/api/products/route';
 
+ interface ProductType  {
+    productName ?: string;
+    price ?: number;
+    description ?: string;
+    images ?: Array<{public_id : string, url : string}>;
+}
 async function getProductData (productId :string){
-    const product = await Product.findById(productId) as ProductType
-    return product;
+    try {
+        const product = await Product.findById(productId) as ProductType
+        return product;
+    }
+    catch (err:any) {
+        throw new Error(err)
+    }
 }
 export default async function Page(  {params: { productId },
 }: {
