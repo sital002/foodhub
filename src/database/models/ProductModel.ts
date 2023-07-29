@@ -12,12 +12,9 @@ const ProductSchmea = new mongoose.Schema({
     type: Number,
     required: [true, "Price is reqiured"],
   },
-  images: [
-      {
-        public_id: String,
-        url: String,
-      }
-    ],
+  images: {
+    type:Array,
+  },
   rating: {
     type: Number,
     default: 0,
@@ -28,6 +25,7 @@ const ProductSchmea = new mongoose.Schema({
 });
 
 
+// mongoose.models = {};
 
 const Product = mongoose.models.product || mongoose.model("product", ProductSchmea);
 export default Product;

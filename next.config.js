@@ -9,6 +9,12 @@ const nextConfig = {
             port: '',
             pathname: '/**',
           },
+          {
+            protocol: 'https',
+            hostname: 'upcdn.io',
+            port: '',
+            pathname: '/**',
+          },
         ],
       },
       eslint: {
