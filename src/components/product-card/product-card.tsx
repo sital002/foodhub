@@ -2,7 +2,15 @@ import React from 'react'
 import vegImg from '../../assets/veg-resturant.png'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ProductItemProps } from "@utils/types"
+
+interface ProductItemProps {
+  _id:string;
+  productName:string;
+  price:number;
+  images:string [];
+  alt:string;
+}
+
 
 
 

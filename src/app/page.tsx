@@ -7,18 +7,18 @@ import vegImg from '@assets/veg-resturant.png'
 import HeroSection from "@components/hero-section/hero-section";
 import PopularProducts from "@/components/popular-products/popular-products";
 
-export default   function Home() {
+export default function Page() {
 
   return (
     <main>
-        <HeroSection/>
+      <HeroSection />
       <Wrapper>
         <h2 className="text-2xl font-bold my-2">Shop By Categories</h2>
         <p className="text-gray-500">We've Got Something For Everyone</p>
         <CategoryCard title="Veg Resturant" img={vegImg} alt={"Veg Resturant"} />
         <CategoryCard title="Non Veg Resturant" img={nonVegImg} alt={"Non Veg Resturant"} />
         <CategoryCard title="Bakery" img={backeryImg} alt={"Bakery"} />
-      <PopularProducts/>
+        <PopularProducts />
       </Wrapper>
     </main>
   )

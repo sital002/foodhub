@@ -1,6 +1,7 @@
 import NewProuctForm from "@/components/new-product-form/new-product-form"
 
-const NewProduct = () => {
+export default function Page() {
+
   return (
     <div>
         <NewProuctForm/>
@@ -8,4 +9,3 @@ const NewProduct = () => {
   )
 }
 
-export default NewProduct

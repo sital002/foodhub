@@ -9,7 +9,8 @@ interface FormData {
   password: string;
 }
 
-const SignIn = () => {
+export default function Page() {
+
   const {
     register,
     handleSubmit,
@@ -81,4 +82,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+
