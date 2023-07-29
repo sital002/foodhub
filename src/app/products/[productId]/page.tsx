@@ -19,7 +19,7 @@ async function getProductData (productId :string){
         throw new Error(err)
     }
 }
-export default async function Page(  {params: { productId },
+export default async function ProductDetails(  {params: { productId },
 }: {
   params: { productId: string }
 }) {
