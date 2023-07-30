@@ -5,6 +5,7 @@ import PopularProducts from '@/components/popular-products/popular-products';
 import Product from '@/database/models/ProductModel';
 import Quantity from '@/components/quantity/quantity';
 
+
 //  interface ProductType  {
 //     productName ?: string;
 //     price ?: number;
@@ -42,6 +43,7 @@ export default async function Page(  {params: { productId },
             <div className='my-4'>
                 <p className='text-2xl font-medium my-2'>You might also like</p>
                 <PopularProducts/>
+
             </div>
         </Wrapper>
 

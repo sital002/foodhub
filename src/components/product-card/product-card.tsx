@@ -2,6 +2,7 @@ import React from 'react'
 import vegImg from '../../assets/veg-resturant.png'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ProductProps } from '../product-category/product-category'
 
 interface ProductItemProps {
   _id:string;
