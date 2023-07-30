@@ -2,7 +2,6 @@ import React from 'react'
 import vegImg from '../../assets/veg-resturant.png'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ProductProps } from '../product-category/product-category'
 
 interface ProductItemProps {
   _id:string;
@@ -20,7 +19,7 @@ const ProductCard = ({_id,productName,price,images,alt}:ProductItemProps) => {
   return (
     <Link href={`/products/${_id}`}>
     <div className='p-1 shadow-lg cursor-pointer border-solid border-2 ease-in duration-200 rounded-lg mx-1 w-[48%] md:w-[32%] lg:w-[24%] inline-block my-1 hover:border-sky-500'>
-        <Image src={vegImg} alt={alt || ""} className='w-60 mx-auto h-48' height={600} width={600} />
+        <Image src={vegImg} alt={ ""} className='w-60 mx-auto h-48' height={600} width={600} />
         <p className='px-2 py-1 text-gray-500'>Baisnab Sweets</p>
         <p className='font-bold px-2 '>{productName}</p>
         <p className='px-2 py-1 font-bold text-red-500'>{price}</p>

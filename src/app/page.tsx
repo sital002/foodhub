@@ -6,7 +6,6 @@ import nonVegImg from '@assets/non-veg-resturant.png'
 import vegImg from '@assets/veg-resturant.png'
 import HeroSection from "@components/hero-section/hero-section";
 import PopularProducts from "@/components/popular-products/popular-products";
-import ProductCategory from "@/components/product-category/product-category";
 
 export default function Page() {
 
