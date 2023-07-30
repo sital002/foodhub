@@ -1,4 +1,3 @@
-
 import './globals.css'
 import type { Metadata } from 'next'
 
@@ -22,7 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <Provider >
-
          <Navbar/>
         <main>
         {children}

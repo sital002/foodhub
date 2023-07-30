@@ -2,8 +2,8 @@
 import Image from 'next/image';
 import nonVegImg from "@assets/non-veg-resturant.png"
 import Wrapper from '@components/wrapper/wrapper';
-import ProductCard from '@/components/product-card/product-card';
 import { useState } from 'react';
+import ProductCategory from '@/components/product-category/product-category';
 
 
 const Details = () => {
@@ -30,15 +30,7 @@ const Details = () => {
                 </div>
             </div>
             <div className='my-4'>
-                <p className='text-2xl font-medium my-2'>You might also like</p>
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                <ProductCategory title="You might also like" products={[]} />
             </div>
         </Wrapper>
 
