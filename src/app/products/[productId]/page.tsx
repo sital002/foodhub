@@ -1,9 +1,13 @@
 import Image from 'next/image';
 import nonVegImg from "@assets/non-veg-resturant.png"
 import Wrapper from '@components/wrapper/wrapper';
-import PopularProducts from '@/components/popular-products/popular-products';
 import Product from '@/database/models/ProductModel';
 import Quantity from '@/components/quantity/quantity';
+
+
+
+
+
 
 
 //  interface ProductType  {
@@ -39,11 +43,6 @@ export default async function Page(  {params: { productId },
                     <p className='text-rose-500 my-3  md:my-5'>{product.price}</p>
                     <Quantity/>
                 </div>
-            </div>
-            <div className='my-4'>
-                <p className='text-2xl font-medium my-2'>You might also like</p>
-                <PopularProducts/>
-
             </div>
         </Wrapper>
 
