@@ -7,10 +7,12 @@ import vegImg from '@assets/veg-resturant.png'
 import HeroSection from "@components/hero-section/hero-section";
 import ProductCategory from "@/components/product-category/product-category";
 import Product from "@/database/models/ProductModel";
+import { connectToDB } from "@/database/database";
 
 
 async function getPopularProducts() {
   try{
+    await connectToDB()
     const products =  await Product.find().limit(8);
     return products;
   }
@@ -21,7 +23,9 @@ async function getPopularProducts() {
 }
 
 export default async function Page() {
-  const products = await getPopularProducts();
+
+const products = await getPopularProducts();
+  
   return (
     <main>
       <HeroSection />

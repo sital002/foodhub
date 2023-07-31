@@ -4,6 +4,7 @@ import Wrapper from '@components/wrapper/wrapper';
 import Product from '@/database/models/ProductModel';
 import Quantity from '@/components/quantity/quantity';
 import ProductCategory from '@/components/product-category/product-category';
+import { connectToDB } from '@/database/database';
 
 
 
@@ -19,6 +20,7 @@ interface ProductItemProps {
 
 
 async function getProducts() {
+    await connectToDB()
     const res = await Product.find().limit(8);
     return res;
 }
