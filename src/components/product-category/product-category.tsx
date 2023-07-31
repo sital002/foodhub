@@ -1,5 +1,5 @@
 import React from 'react'
-import Wrapper from '../wrapper/wrapper'
+import Wrapper from '@components/wrapper/wrapper'
 import ProductCard from '@components/product-card/product-card'
 
 
