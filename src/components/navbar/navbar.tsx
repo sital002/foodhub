@@ -24,7 +24,7 @@ const Navbar = () => {
           status === "authenticated" ? (
             <div className='flex justify-center items-center gap-3'>
               <div className='relative group'>
-              <div className='cursor-pointer text-3xl ml-1 bg-red-400'>
+              <div className='cursor-pointer text-3xl ml-1'>
               <AiOutlineShoppingCart />
               </div>
               <CartBox/>

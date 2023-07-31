@@ -2,6 +2,7 @@
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import FileUploader from "../file-upload/file-upload";
+import { useState } from "react";
 
 interface FormData {
     productName: string;
@@ -10,6 +11,8 @@ interface FormData {
 }
 
 const NewProuctForm = () => {
+
+  const [images,setImages] = useState<string[]>([])
   const {
     register,
     handleSubmit,
@@ -17,16 +20,16 @@ const NewProuctForm = () => {
   } = useForm<FormData>();
 
   const getFormData: SubmitHandler<FormData> = async(data)=> {
-    // console.log(data);
-    const res = await fetch('/api/products', {
+    console.log(images)
+    const res = await fetch('http://localhost:3000/api/products/new', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             },
-        body: JSON.stringify(data),
+        body: JSON.stringify({...data,images})
     })
     const result = await res.json()
-    console.log(result)
+    console.log(result);
 
   };
  
@@ -56,20 +59,8 @@ const NewProuctForm = () => {
         <input
           placeholder="Description"
           className="border-b-2 h-[40px] focus:placeholder-transparent focus:border-b-red-500 outline-none duration-100 transition-all w-full my-2"
-          type="password"
+          type="text"
           {...register("description", {
-            required: {
-              value: true,
-              message: "Description is required"
-            },
-            minLength:{
-              value: 50,
-              message:"Description must be at least 50 characters long"
-            },
-            maxLength:{
-              value: 250,
-              message:"Description must be at most 64 characters long"
-            }
           })}
         />
         <span className="text-red-500 text-sm">{errors?.description?.message}</span>
@@ -85,7 +76,7 @@ const NewProuctForm = () => {
           })}
         />
         <span className="text-red-500 text-sm  ">{errors?.price?.message}</span>
-        <FileUploader/>
+        <FileUploader images={images} setImages={setImages}/>
         <button type="submit" className="w-full h-[40px] rounded-md cursor-pointer bg-red-500 text-white my-3 mx-auto">Add</button>
       </div>
     </form>
