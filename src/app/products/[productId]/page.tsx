@@ -3,19 +3,27 @@ import nonVegImg from "@assets/non-veg-resturant.png"
 import Wrapper from '@components/wrapper/wrapper';
 import Product from '@/database/models/ProductModel';
 import Quantity from '@/components/quantity/quantity';
+import ProductCategory from '@/components/product-category/product-category';
+import { connectToDB } from '@/database/database';
 
 
 
 
 
+interface ProductItemProps {
+    _id:string;
+    productName:string;
+    description?:string;
+    price:number;
+    images:string [];
+  }
 
 
-//  interface ProductType  {
-//     productName ?: string;
-//     price ?: number;
-//     description ?: string;
-//     images : string[]
-// }
+async function getProducts() {
+    await connectToDB()
+    const res = await Product.find().limit(8);
+    return res;
+}
 async function getProductData(productId :string){
     try {
         const product =  await Product.findById(productId);
@@ -29,7 +37,7 @@ export default async function Page(  {params: { productId },
 }: {
   params: { productId: string }
 }) {
-    console.log(productId)
+    const products : ProductItemProps[] = await getProducts();
     const product = await getProductData(productId);
     return (
         <Wrapper>
@@ -44,6 +52,7 @@ export default async function Page(  {params: { productId },
                     <Quantity/>
                 </div>
             </div>
+            <ProductCategory title='You might also like' products={products}  />
         </Wrapper>
 
     )
