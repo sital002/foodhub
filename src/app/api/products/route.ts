@@ -10,9 +10,15 @@ export interface ProductType  {
 }
 
 export  async function GET(){
-    await connectToDB();
-    const products = await Product.find();
-    return  NextResponse.json(products,{status : 200})
+    try{
+
+        await connectToDB();
+        const products = await Product.find();
+        return  NextResponse.json(products,{status : 200})
+    }
+    catch(err:any){
+        return NextResponse.json({message:err.message},{status:500})
+    }
 }
 
 

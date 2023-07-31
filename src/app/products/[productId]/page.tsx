@@ -2,6 +2,7 @@ import Image from 'next/image';
 import nonVegImg from "@assets/non-veg-resturant.png"
 import Wrapper from '@components/wrapper/wrapper';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import PopularProducts from '@/components/popular-products/popular-products';
 import Product from '@/database/models/ProductModel';
 import Quantity from '@/components/quantity/quantity';
@@ -9,6 +10,12 @@ import Quantity from '@/components/quantity/quantity';
 import { useState } from 'react';
 import ProductCategory from '@/components/product-category/product-category';
 >>>>>>> 642ffd1e64521655bd4cfd54421a11df007c9817
+=======
+import PopularProducts from '@/components/popular-products/popular-products';
+import Product from '@/database/models/ProductModel';
+import Quantity from '@/components/quantity/quantity';
+
+>>>>>>> c98e046a5532f7db28f830530f863f438ff3202e
 
 //  interface ProductType  {
 //     productName ?: string;
@@ -46,11 +53,17 @@ export default async function Page(  {params: { productId },
             </div>
             <div className='my-4'>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <p className='text-2xl font-medium my-2'>You might also like</p>
                 <PopularProducts/>
 =======
                 <ProductCategory title="You might also like" products={[]} />
 >>>>>>> 642ffd1e64521655bd4cfd54421a11df007c9817
+=======
+                <p className='text-2xl font-medium my-2'>You might also like</p>
+                <PopularProducts/>
+
+>>>>>>> c98e046a5532f7db28f830530f863f438ff3202e
             </div>
         </Wrapper>
 
