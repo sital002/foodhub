@@ -5,8 +5,23 @@ import backeryImg from '@assets/bakery.png';
 import nonVegImg from '@assets/non-veg-resturant.png'
 import vegImg from '@assets/veg-resturant.png'
 import HeroSection from "@components/hero-section/hero-section";
+import ProductCategory from "@/components/product-category/product-category";
+import Product from "@/database/models/ProductModel";
 
-export default function Page() {
+
+async function getPopularProducts() {
+  try{
+    const products =  await Product.find().limit(8);
+    return products;
+  }
+  catch(err:any){
+    throw new Error(err.message)
+  }
+  
+}
+
+export default async function Page() {
+  const products = await getPopularProducts();
   return (
     <main>
       <HeroSection />
@@ -18,7 +33,7 @@ export default function Page() {
         <CategoryCard title="Bakery" img={backeryImg} alt={"Bakery"} />
       </Wrapper>
       <Wrapper>
-        <h2 className="text-2xl font-bold my-2">Popular Products</h2>
+        <ProductCategory  title='Popular Products' products={products}  />
       </Wrapper>
     </main>
   )
