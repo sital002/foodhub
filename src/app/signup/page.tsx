@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import Link from 'next/link';
 
 interface FormData {
   username: string;
