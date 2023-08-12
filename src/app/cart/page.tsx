@@ -4,7 +4,7 @@ import Checkout from "@/components/checkout-price/checkout-price"
 
 const Cart=()=>{
     return(
-        <div className="lg:flex lg:justify-evenly">
+        <div className="lg:flex lg:justify-evenly mt-5">
             <div >
                 <CartItem/>
                 <CartItem/>
