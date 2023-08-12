@@ -1,3 +1,4 @@
+"use client"
 import CartItem from "@/components/cart-item/cart-item"
 import Checkout from "@/components/checkout-price/checkout-price"
 

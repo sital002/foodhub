@@ -1,24 +1,34 @@
-"use client"
 
-import CategoryCard from "@/components/category-card/category-card";
-import Wrapper from "@/components/wrapper/wrapper";
-import Image from "next/image";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import backeryImg from '../assets/bakery.png';
-import heroSectionImg from '../assets/hero-section-image.png';
-import nonVegImg from '../assets/non-veg-resturant.png'
-import vegImg from '../assets/veg-resturant.png'
-import ProductCard from "@/components/product-card/product-card";
+import CategoryCard from "@components/category-card/category-card";
+import Wrapper from "@components/wrapper/wrapper";
+import backeryImg from '@assets/bakery.png';
+import nonVegImg from '@assets/non-veg-resturant.png'
+import vegImg from '@assets/veg-resturant.png'
+import HeroSection from "@components/hero-section/hero-section";
+import ProductCategory from "@/components/product-category/product-category";
+import Product from "@/database/models/ProductModel";
+import { connectToDB } from "@/database/database";
 
 
-export default function Home() {
+async function getPopularProducts() {
+  try{
+    await connectToDB()
+    const products =  await Product.find().limit(8);
+    return products;
+  }
+  catch(err:any){
+    throw new Error(err.message)
+  }
+  
+}
+
+export default async function Page() {
+
+const products = await getPopularProducts();
+  
   return (
     <main>
-      <Carousel autoPlay={true} className="my-2" showThumbs={false}>
-        <div><Image src={heroSectionImg} width={500} height={500} alt="Food Hub" /></div>
-        <div><Image src={heroSectionImg} width={500} height={500} alt="Food Hub" /></div>
-      </Carousel>
+      <HeroSection />
       <Wrapper>
         <h2 className="text-2xl font-bold my-2">Shop By Categories</h2>
         <p className="text-gray-500">We've Got Something For Everyone</p>
@@ -27,17 +37,7 @@ export default function Home() {
         <CategoryCard title="Bakery" img={backeryImg} alt={"Bakery"} />
       </Wrapper>
       <Wrapper>
-      <h2 className="text-2xl font-bold my-2">Popular Products</h2>
-      <ProductCard/>
-      <ProductCard/>
-      <ProductCard/>
-      <ProductCard/>
-      <ProductCard/>
-      <ProductCard/>
-      <ProductCard/>
-      <ProductCard/>
-      <ProductCard/>
-      <ProductCard/>
+        <ProductCategory  title='Popular Products' products={products}  />
       </Wrapper>
     </main>
   )
