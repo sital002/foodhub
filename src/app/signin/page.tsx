@@ -74,7 +74,7 @@ export default function Page() {
         <a className="text-sm text-blue-500 my-5" href="">
           Having trouble logging in?
         </a>
-        <Link href={"/signup"}><button className= "w-full rounded-md cursor-pointer border h-[40px]">Sign Up</button></Link>
+        <Link href={'/signup'}><p className="min-w-[350px] flex justify-center items-center rounded-md cursor-pointer border h-[40px]">Sign Up</p></Link>
       </div>
     </form>
     </>

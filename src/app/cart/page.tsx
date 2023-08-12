@@ -1,10 +1,18 @@
+"use client"
+import CartItem from "@/components/cart-item/cart-item"
+import Checkout from "@/components/checkout-price/checkout-price"
 
-export default function Page(){
-    return (
-        <div>
-            <h1>Cart</h1>
+const Cart=()=>{
+    return(
+        <div className="lg:flex lg:justify-evenly mt-5">
+            <div >
+                <CartItem/>
+                <CartItem/>
+                <CartItem/>
+            </div>
+            <Checkout/>
         </div>
     )
-
-
 }
+
+export default Cart
