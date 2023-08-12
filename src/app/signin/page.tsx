@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 interface FormData {
@@ -54,7 +55,7 @@ const SignIn = () => {
         <a className="text-sm text-blue-500 my-5" href="">
           Having trouble logging in?
         </a>
-        <button className="w-[90%] rounded-md cursor-pointer border h-[40px]">Sign Up</button>
+        <Link href={'/signup'}><p className="min-w-[350px] flex justify-center items-center rounded-md cursor-pointer border h-[40px]">Sign Up</p></Link>
       </div>
     </form>
   );
