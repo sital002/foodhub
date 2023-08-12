@@ -85,11 +85,7 @@ export default function Page() {
         <a className="text-sm text-blue-500 my-5" href="">
           Having trouble logging in?
         </a>
-<<<<<<< HEAD
-        <Link href={'/signin'}><p className="min-w-[350px] flex justify-center items-center rounded-md cursor-pointer border h-[40px]">Sign Up</p></Link>
-=======
         <Link href={"/signin"}><button  className="w-full rounded-md cursor-pointer border h-[40px]">Sign In</button></Link>
->>>>>>> 3373e399825129cda7cd679411f7cac0d3df9d4b
       </div>
     </form>
   );
