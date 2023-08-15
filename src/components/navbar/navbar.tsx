@@ -16,10 +16,10 @@ const Navbar = () => {
             <span>FoodHub</span>
           </Link>
         </div>
-        <div className="max-w-md w-full mx-1">
+        <div className="max-w-md w-full mx-1 ">
           <input
             type="text"
-            className="px-4 py-2 w-full rounded-3xl bg-gray-100 border-2 border-black "
+            className="px-4 py-2 w-full rounded-3xl bg-gray-100 border-2 border-black h-full"
             placeholder="Search Products"
           />
         </div>

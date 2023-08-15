@@ -1,10 +1,12 @@
-
 ## Getting Started
+
 ##### Local Development
+
 ```bash
 git clone https://github.com/sital002/foodhub
-npm ci 
+npm ci
 ```
+
 First, run the development server:
 
 ```bash
@@ -15,26 +17,26 @@ yarn dev
 pnpm dev
 ```
 
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Start Contributing
+
 #### Fork the repository and Clone the repository.
 
 ```
 cd foodhub
 git checkout -b "branchName"
-// Make changes and commit those changes 
+// Make changes and commit those changes
 git commit -m "commit message"
 git push origin "branchName"
-Create a pull request 
+Create a pull request
 ```
 
-
 #### Environment Variables:
-NEXT_AUTH="" \
-GITHUB_SECRET="" \
-GITHUB_ID="" \
+
+```
+NEXT_AUTH=""
+GITHUB_SECRET=""
+GITHUB_ID=""
 NEXT_PUBLIC_URL=""
-
-
+```
