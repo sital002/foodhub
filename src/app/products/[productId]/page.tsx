@@ -36,10 +36,9 @@ export default async function Page({
   const product: ProductItemProps = await getProductData(productId);
   return (
     <Wrapper>
-      <div className="md:flex flex-row overflow-hidden gap-2">
-        <div className="max-w-md w-full">
+      <div className="  md:flex flex-row overflow-hidden gap-2">
+        <div className="w-full mx-auto h-2/4 md:max-w-md">
           <ImageHolder images={product.images} />
-          {/* <Image src={product.images[0] || nonVegImg} alt={product.productName || ""}  height={500} width={500} /> */}
         </div>
         <div>
           <h1 className="text-2xl md:text-3xl font-semibold">

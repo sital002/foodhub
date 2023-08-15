@@ -14,7 +14,7 @@ const Checkout = () => {
           type="text"
           placeholder="Enter Coupen Code"
         />
-        <button className="bg-sky-600 text-white px-7 py-2 rounded-md ml-1 cursor-pointer">
+        <button className="bg-sky-600 text-white px-7 py-1 rounded-md ml-1 cursor-pointer">
           Apply
         </button>
       </div>
@@ -22,7 +22,7 @@ const Checkout = () => {
         <p>Total</p>
         <p className="text-[18px] text-orange-500">Rs 0</p>
       </div>
-      <button className="bg-orange-500 text-white capitalize py-3 px-4 w-[350px] rounded-md">
+      <button className="bg-orange-500 text-white capitalize py-2 px-4 w-[350px] rounded-md">
         Proceed to CheckOut (0)
       </button>
     </div>
