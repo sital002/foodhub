@@ -8,7 +8,7 @@ const CartItem = () => {
   const MIN_LIMIT = 1;
   const [count, setCount] = useState<number>(1);
   return (
-    <div className="rounded-md flex my-6  shadow-md shadow-gray-200 justify-between sm:px-5  md:px-16 lg:px-0 bg-white">
+    <div className="rounded-md flex mb-6  shadow-md shadow-gray-200 justify-between sm:px-5  md:px-16 lg:px-0 bg-white">
       <div className="flex items-center p-3">
         <div className="flex items-center">
           <input type="checkbox" />
