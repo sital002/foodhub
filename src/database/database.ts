@@ -1,24 +1,32 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 let isConnected = false;
 
-export const connectToDB = async () => {
-  mongoose.set('strictQuery', true);
+interface connectionOptions {
+  dbName: string;
+  useNewUrlParser: boolean;
+  useUnifiedTopology: boolean;
+}
 
-  if(isConnected) {
-    console.log('MongoDB is already connected');
+export const connectToDB = async () => {
+  mongoose.set("strictQuery", true);
+
+  if (isConnected) {
+    console.log("MongoDB is already connected");
     return;
   }
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI || "",{
-        dbName: "foodhub",
-    })
+    await mongoose.connect(process.env.MONGODB_URI || "", {
+      dbName: "foodhub",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    } as connectionOptions);
 
     isConnected = true;
 
-    console.log('MongoDB connected')
+    console.log("MongoDB connected");
   } catch (error) {
     console.log(error);
   }
-}
+};
