@@ -1,7 +1,6 @@
 "use client";
 
 import { useForm, SubmitHandler } from "react-hook-form";
-import FileUploader from "../file-upload/file-upload";
 import { useState } from "react";
 import { AdvancedImage } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
@@ -11,15 +10,10 @@ interface FormData {
   productName: string;
   description: string;
   price: string;
-  products: File;
+  products: File[];
 }
 
 const NewProuctForm = () => {
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-    },
-  });
   const [images, setImages] = useState<string[]>([]);
   const {
     register,
@@ -30,6 +24,23 @@ const NewProuctForm = () => {
   const getFormData: SubmitHandler<FormData> = async (data) => {
     console.log(data);
     // console.log(images);
+    const formData = new FormData();
+    formData.append("file", data.products[0]);
+    formData.append(
+      "upload_preset",
+      process.env.NEXT_PUBLIC_CLOUDINARY_PRESET!
+    );
+    fetch(process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_URL!, {
+      method: "POST",
+      body: formData,
+    }).then((res) =>
+      res
+        .json()
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => console.log(err))
+    );
 
     const res = await fetch("http://localhost:3000/api/products/new", {
       method: "POST",
@@ -90,7 +101,6 @@ const NewProuctForm = () => {
           <span className="text-red-500 text-sm  ">
             {errors?.price?.message}
           </span>
-          {/* <FileUploader images={images} setImages={setImages} /> */}
           <input
             type="file"
             {...register("products", {
@@ -100,7 +110,6 @@ const NewProuctForm = () => {
               },
             })}
           />
-          {/* <AdvancedImage cldImg={images}  /> */}
           <button
             type="submit"
             className="w-full h-[40px] rounded-md cursor-pointer bg-red-500 text-white my-3 mx-auto"
