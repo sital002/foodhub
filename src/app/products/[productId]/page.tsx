@@ -14,9 +14,13 @@ export interface ProductItemProps {
 }
 
 async function getProducts() {
-  await connectToDB();
-  const res = (await Product.find().limit(8)) as ProductItemProps[];
-  return res;
+  try {
+    await connectToDB();
+    const res = (await Product.find().limit(8)) as ProductItemProps[];
+    return res;
+  } catch (err: any) {
+    throw new Error(err);
+  }
 }
 async function getProductData(productId: string) {
   try {
@@ -42,13 +46,13 @@ export default async function Page({
           <ImageHolder images={product.images} />
         </div>
         <div>
-          <h1 className="text-2xl md:text-3xl font-semibold">
+          <h1 className="text-2xl md:text-3xl font-semibold max-w-lg">
             {product.productName}
           </h1>
           <p className="text-gray-50 bg-sky-700 w-fit px-2 my-3 rounded-3xl md:my-5 cursor-pointer">
             Baishnab Sweets
           </p>
-          <p className="max-w-sm">{product?.description}</p>
+          <p className="max-w-lg">{product?.description}</p>
           <p className="text-rose-500 my-3  md:my-5">NPR. {product.price}</p>
           <Quantity />
         </div>
