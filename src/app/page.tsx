@@ -11,11 +11,23 @@ import { ProductItemProps } from "./products/[productId]/page";
 
 async function getPopularProducts() {
   try {
-    await connectToDB();
-    const products = (await Product.find().limit(8)) as ProductItemProps[];
+    // await connectToDB();
+    // const products = (await Product.find().limit(8)) as ProductItemProps[];
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/products`,
+      {
+        method: "GET",
+        cache: "no-store",
+      }
+    );
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+    const products = (await res.json()) as ProductItemProps[];
     return products;
   } catch (err: any) {
-    throw new Error(err.message);
+    console.log(err.message);
   }
 }
 
@@ -26,7 +38,9 @@ export default async function Page() {
     <main>
       <HeroSection />
       <Wrapper>
-        <h2 className="text-2xl font-bold my-2">Shop By Categories</h2>
+        <h2 className="text-2xl font-bold my-2 text-slate-600">
+          Shop By Categories
+        </h2>
         <p className="text-gray-500">We've Got Something For Everyone</p>
         <CategoryCard
           title="Veg Resturant"
@@ -41,7 +55,9 @@ export default async function Page() {
         <CategoryCard title="Bakery" img={backeryImg} alt={"Bakery"} />
       </Wrapper>
       <Wrapper>
-        <ProductCategory title="Popular Products" products={products} />
+        {products && (
+          <ProductCategory title="Popular Products" products={products} />
+        )}
       </Wrapper>
     </main>
   );
