@@ -20,6 +20,7 @@ const NewProuctForm = () => {
 
   const getFormData: SubmitHandler<FormData> = async (data) => {
     console.log(data);
+    // console.log(images);
     const formData = new FormData();
     formData.append("file", data.products[0]);
     formData.append(
@@ -34,27 +35,19 @@ const NewProuctForm = () => {
         .json()
         .then((data) => {
           console.log(data);
-          setImages(data);
-          addNewProduct();
         })
         .catch((err) => console.log(err))
     );
-    async function addNewProduct() {
-      const res = await fetch("http://localhost:3000/api/products/new", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          productName: data.productName,
-          description: data.description,
-          price: data.price,
-          images,
-        }),
-      });
-      const result = await res.json();
-      console.log(result);
-    }
+
+    const res = await fetch("http://localhost:3000/api/products/new", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...data, images }),
+    });
+    const result = await res.json();
+    // console.log(result);
   };
 
   return (
