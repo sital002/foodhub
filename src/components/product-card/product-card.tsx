@@ -22,7 +22,7 @@ const ProductCard = ({
 }: ProductItemProps) => {
   return (
     <Link href={`/products/${_id}`}>
-      <div className="p-1 h-[360px] shadow-lg cursor-pointer border-solid border-2 ease-in duration-200 rounded-lg hover:border-sky-500">
+      <div className="p-1 min-h-[340px] shadow-lg cursor-pointer border-solid border-2 ease-in duration-200 rounded-lg hover:border-sky-500">
         <Image
           src={images[0]?.secure_url || vegImg}
           alt={alt || ""}
