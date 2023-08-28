@@ -32,14 +32,14 @@ const NewProuctForm = () => {
     }).then((res) =>
       res
         .json()
-        .then((data) => {
-          console.log(data);
-          setImages((prev) => [...prev, data.secure_url]);
-          addNewProduct(data);
+        .then((cloudinaryImg) => {
+          console.log(cloudinaryImg);
+          setImages((prev) => [...prev, cloudinaryImg.secure_url]);
+          addNewProduct(cloudinaryImg);
         })
         .catch((err) => console.log(err))
     );
-    async function addNewProduct(data: any) {
+    async function addNewProduct(cloudinaryImg: any) {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/new`,
         {
@@ -51,7 +51,7 @@ const NewProuctForm = () => {
             productName: data.productName,
             description: data.description,
             price: data.price,
-            images: data,
+            images: cloudinaryImg,
           }),
         }
       );
