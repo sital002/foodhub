@@ -20,7 +20,6 @@ const NewProuctForm = () => {
 
   const getFormData: SubmitHandler<FormData> = async (data) => {
     console.log(data);
-    // console.log(images);
     const formData = new FormData();
     formData.append("file", data.products[0]);
     formData.append(
@@ -35,22 +34,30 @@ const NewProuctForm = () => {
         .json()
         .then((data) => {
           console.log(data);
+          setImages((prev) => [...prev, data.secure_url]);
+          addNewProduct();
         })
         .catch((err) => console.log(err))
     );
-
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/new`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...data, images }),
-      }
-    );
-    const result = await res.json();
-    console.log(result);
+    async function addNewProduct() {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/new`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            productName: data.productName,
+            description: data.description,
+            price: data.price,
+            images: images,
+          }),
+        }
+      );
+      const result = await res.json();
+      console.log(result);
+    }
   };
 
   return (
