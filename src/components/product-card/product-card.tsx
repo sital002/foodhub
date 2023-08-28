@@ -18,13 +18,14 @@ const ProductCard = ({
   images,
   price,
   description,
+  alt,
 }: ProductItemProps) => {
   return (
     <Link href={`/products/${_id}`}>
-      <div className="p-1 min-h-[300px] shadow-lg cursor-pointer min-w-[170px] border-solid border-2 ease-in duration-200 rounded-lg mx-1 w-[48%] md:w-[32%] lg:w-[24%] inline-block my-1 hover:border-sky-500">
+      <div className="p-1 h-[360px] shadow-lg cursor-pointer border-solid border-2 ease-in duration-200 rounded-lg hover:border-sky-500">
         <Image
           src={images[0]?.secure_url || vegImg}
-          alt={productName || ""}
+          alt={alt || ""}
           className="w-60 mx-auto h-48"
           height={180}
           width={180}
@@ -32,8 +33,8 @@ const ProductCard = ({
         <p className="px-2 py-1 text-gray-500">Baisnab Sweets</p>
         <p className="font-bold px-2 ">{productName}</p>
         <p className="text-gray-500 text-md">
-          {description && description?.length > 55
-            ? description?.substring(0, 55) + "..."
+          {description && description?.length > 50
+            ? description?.substring(0, 50) + "..."
             : description}
         </p>
         <p className="px-2 py-1 font-bold text-red-500">NPR: {price}</p>

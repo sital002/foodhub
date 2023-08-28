@@ -14,11 +14,11 @@ const ImageHolder = ({ images }: ImageHolderProps) => {
         return (
           <div key={image + index}>
             <Image
-              className="max-h-60 max-w-md"
+              className="w-full  h-full"
               src={image.secure_url}
               alt={image.alt || ""}
-              width={600}
-              height={400}
+              width={300}
+              height={200}
             />
           </div>
         );

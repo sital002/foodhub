@@ -37,8 +37,8 @@ export default async function Page({
   console.log(product);
   return (
     <Wrapper>
-      <div className="md:flex flex-row overflow-hidden gap-2 justify-between items-center">
-        <div className="w-full mx-auto h-2/4 md:max-w-md">
+      <div className="md:flex flex-row overflow-hidden gap-2 justify-center items-center">
+        <div className="w-96 md:max-w-md ">
           <ImageHolder images={product.images} />
         </div>
         <div>
