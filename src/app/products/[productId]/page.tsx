@@ -5,23 +5,23 @@ import ProductCategory from "@/components/product-category/product-category";
 import { connectToDB } from "@/database/database";
 import ImageHolder from "@/components/image-holder/image-holder";
 
-interface ProductItemProps {
+export interface ProductItemProps {
   _id: string;
   productName: string;
   description?: string;
   price: number;
-  images: string[];
+  images: any;
 }
 
 async function getProducts() {
   await connectToDB();
-  const res = await Product.find().limit(8);
+  const res = (await Product.find().limit(8)) as ProductItemProps[];
   return res;
 }
 async function getProductData(productId: string) {
   try {
     await connectToDB();
-    const product = await Product.findById(productId);
+    const product = (await Product.findById(productId)) as ProductItemProps;
     return product;
   } catch (err: any) {
     throw new Error(err);
@@ -34,9 +34,10 @@ export default async function Page({
 }) {
   const products: ProductItemProps[] = await getProducts();
   const product: ProductItemProps = await getProductData(productId);
+  console.log(product);
   return (
     <Wrapper>
-      <div className="  md:flex flex-row overflow-hidden gap-2">
+      <div className="md:flex flex-row overflow-hidden gap-2 justify-between items-center">
         <div className="w-full mx-auto h-2/4 md:max-w-md">
           <ImageHolder images={product.images} />
         </div>
@@ -47,6 +48,7 @@ export default async function Page({
           <p className="text-gray-50 bg-sky-700 w-fit px-2 my-3 rounded-3xl md:my-5 cursor-pointer">
             Baishnab Sweets
           </p>
+          <p className="max-w-sm">{product?.description}</p>
           <p className="text-rose-500 my-3  md:my-5">NPR. {product.price}</p>
           <Quantity />
         </div>

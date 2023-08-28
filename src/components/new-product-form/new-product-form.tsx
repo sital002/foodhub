@@ -2,9 +2,6 @@
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
-import { AdvancedImage } from "@cloudinary/react";
-import { fill } from "@cloudinary/url-gen/actions/resize";
-import { Cloudinary } from "@cloudinary/url-gen";
 
 interface FormData {
   productName: string;
