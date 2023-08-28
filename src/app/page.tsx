@@ -7,11 +7,12 @@ import HeroSection from "@components/hero-section/hero-section";
 import ProductCategory from "@/components/product-category/product-category";
 import Product from "@/database/models/ProductModel";
 import { connectToDB } from "@/database/database";
+import { ProductItemProps } from "./products/[productId]/page";
 
 async function getPopularProducts() {
   try {
     await connectToDB();
-    const products = await Product.find().limit(8);
+    const products = (await Product.find().limit(8)) as ProductItemProps[];
     return products;
   } catch (err: any) {
     throw new Error(err.message);
