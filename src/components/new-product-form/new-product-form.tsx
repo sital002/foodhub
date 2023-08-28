@@ -35,11 +35,11 @@ const NewProuctForm = () => {
         .then((data) => {
           console.log(data);
           setImages((prev) => [...prev, data.secure_url]);
-          addNewProduct();
+          addNewProduct(data);
         })
         .catch((err) => console.log(err))
     );
-    async function addNewProduct() {
+    async function addNewProduct(data: any) {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/new`,
         {
@@ -51,7 +51,7 @@ const NewProuctForm = () => {
             productName: data.productName,
             description: data.description,
             price: data.price,
-            images: images,
+            images: data,
           }),
         }
       );
