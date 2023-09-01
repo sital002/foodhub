@@ -16,7 +16,7 @@ export interface ProductItemProps {
 async function getProducts() {
   try {
     await connectToDB();
-    const res = (await Product.find().limit(8)) as ProductItemProps[];
+    const res = (await Product.find()) as ProductItemProps[];
     return res;
   } catch (err: any) {
     throw new Error(err);
@@ -38,7 +38,6 @@ export default async function Page({
 }) {
   const products: ProductItemProps[] = await getProducts();
   const product: ProductItemProps = await getProductData(productId);
-  console.log(product);
   return (
     <Wrapper>
       <div className="md:flex flex-row overflow-hidden gap-2 justify-center items-center">
@@ -54,7 +53,7 @@ export default async function Page({
           </p>
           <p className="max-w-lg">{product?.description}</p>
           <p className="text-rose-500 my-3  md:my-5">NPR. {product.price}</p>
-          <Quantity />
+          <Quantity productId={productId} />
         </div>
       </div>
       <ProductCategory title="You might also like" products={products} />

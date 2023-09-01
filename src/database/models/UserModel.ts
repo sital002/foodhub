@@ -19,12 +19,10 @@ const UserSchema = new mongoose.Schema({
   mobile: {
     type: Number,
   },
-  cart: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "product",
-    },
-  ],
+  cart: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "product",
+  },
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,

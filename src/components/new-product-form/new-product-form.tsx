@@ -2,6 +2,7 @@
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   productName: string;
@@ -11,6 +12,7 @@ interface FormData {
 }
 
 const NewProuctForm = () => {
+  const router = useRouter();
   const [images, setImages] = useState<string[]>([]);
   const {
     register,
@@ -56,6 +58,7 @@ const NewProuctForm = () => {
         }
       );
       const result = await res.json();
+      router.replace("/");
       console.log(result);
     }
   };

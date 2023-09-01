@@ -7,7 +7,6 @@ interface ImageHolderProps {
   images: any;
 }
 const ImageHolder = ({ images }: ImageHolderProps) => {
-  console.log(images);
   return (
     <Carousel autoPlay={true} showThumbs={false} className="h-auto">
       {images.map((image: any, index: number) => {

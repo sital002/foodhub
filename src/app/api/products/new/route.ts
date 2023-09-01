@@ -6,7 +6,6 @@ import { ProductType } from "../route";
 export async function POST(request: NextRequest) {
   try {
     const data = (await request.json()) as ProductType;
-    console.log(data);
     if (!data)
       return NextResponse.json(
         { message: "No data provided" },

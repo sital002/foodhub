@@ -1,9 +1,19 @@
 "use client";
 
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { useState } from "react";
+import { useState, FC } from "react";
 
-const CartItem = () => {
+interface CartItemProps {
+  productId: string;
+  productName: string;
+  description: string;
+  price: number;
+  images: any;
+  quantity?: number;
+}
+
+const CartItem = ({ cart }: { cart: CartItemProps }) => {
+  // console.log(cart);
   const MAX_LIMIT = 999;
   const MIN_LIMIT = 1;
   const [count, setCount] = useState<number>(1);
@@ -19,16 +29,14 @@ const CartItem = () => {
           />
         </div>
         <div className="ml-5 text-[14px]">
-          <p className="text-gray-700 text-sm">
-            Dell Vostra Laptop 32GB Ram with 256 SSD
-          </p>
+          <p className="text-gray-700 text-sm">{cart.productName}</p>
         </div>
       </div>
 
       <div className=" p-2 md:flex md:items-center gap-2 ">
         <div>
-          <p className="text-orange-500 text-[12px]">Rs 2000</p>
-          <p className="text-gray-600 line-through text-[10px]">Rs 2500</p>
+          <p className="text-orange-500 text-[12px]">{cart.price}</p>
+          <p className="text-gray-600 line-through text-[10px]">{cart.price}</p>
           <p className="text-[9px]">-45%</p>
         </div>
 
