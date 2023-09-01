@@ -16,11 +16,7 @@ export interface ProductItemProps {
 async function getProducts() {
   try {
     await connectToDB();
-<<<<<<< HEAD
     const res = (await Product.find()) as ProductItemProps[];
-=======
-    const res = (await Product.find().limit(8)) as ProductItemProps[];
->>>>>>> 3d22542bfedb328217be85134214e2d92fdfcc2b
     return res;
   } catch (err: any) {
     throw new Error(err);
