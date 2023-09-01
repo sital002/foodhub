@@ -1,12 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { ProductItemProps } from "@/app/products/[productId]/page";
+import { FC, useState } from "react";
 
-const Quantity = () => {
+interface QuantityProps {
+  productId: string;
+}
+
+const Quantity: FC<QuantityProps> = ({ productId }) => {
   const MAX_LIMIT = 999;
   const MIN_LIMIT = 1;
 
+  async function addProductToCart(quantity: number) {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId,
+          quantity,
+        }),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const products = await res.json();
+      console.log(products);
+      return products;
+    } catch (err: any) {
+      console.log(err);
+    }
+  }
+
   const [quantity, setQuantity] = useState<number>(1);
+  const handleSubmit = () => {
+    console.log(quantity);
+    addProductToCart(quantity);
+  };
 
   return (
     <div className="h-9 flex flex-row">
@@ -42,7 +74,10 @@ const Quantity = () => {
           +
         </button>
       </div>
-      <button className="ml-3 uppercase font-bold bg-sky-700 py-1 rounded-full h-auto text-slate-100 px-8">
+      <button
+        className="ml-3 uppercase font-bold bg-sky-700 py-1 rounded-full h-auto text-slate-100 px-8"
+        onClick={handleSubmit}
+      >
         Add to Cart
       </button>
     </div>

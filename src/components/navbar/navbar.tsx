@@ -34,7 +34,7 @@ const Navbar = () => {
                 </div>
               </div>
               <Image
-                src={session?.user?.image || ""}
+                src={session.user?.image || ""}
                 className="w-7 h-7 rounded-full"
                 alt={session.user?.name || ""}
                 height={30}

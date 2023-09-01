@@ -6,6 +6,9 @@ import { connectToDB } from "@/database/database";
 
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET || "",
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID || "",
@@ -17,16 +20,14 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session }) {
+    async session({ session, token, user }) {
       await connectToDB();
-      // store the user id from MongoDB to session
       const sessionUser = await User.findOne({ email: session?.user?.email });
       return session;
     },
     async signIn({ account, profile, user, credentials }) {
       try {
         await connectToDB();
-
         // check if user already exists
         const userExists = await User.findOne({ email: profile?.email });
 
