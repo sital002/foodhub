@@ -42,23 +42,21 @@ const NewProuctForm = () => {
         .catch((err) => console.log(err))
     );
     async function addNewProduct(cloudinaryImg: any) {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/new`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            productName: data.productName,
-            description: data.description,
-            price: data.price,
-            images: cloudinaryImg,
-          }),
-        }
-      );
+      const res = await fetch(`/api/products/new`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productName: data.productName,
+          description: data.description,
+          price: data.price,
+          images: cloudinaryImg,
+        }),
+      });
       const result = await res.json();
-      router.replace("/");
+      router.refresh();
+      router.push("/");
       console.log(result);
     }
   };

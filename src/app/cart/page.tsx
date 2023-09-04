@@ -1,28 +1,21 @@
 import CartItem from "@/components/cart-item/cart-item";
 import Checkout from "@/components/checkout-price/checkout-price";
+import { connectToDB } from "@/database/database";
+import { User } from "@/database/models/UserModel";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
+const getCartItems = async (session: any) => {
+  await connectToDB();
+  console.log(session)
+  const data = await User.findOne({ email: session?.user?.email }).populate("cart")
+  return data?.cart;
+  return []
+};
 const Cart = async () => {
-  const getCartItems = async () => {
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        cache: "no-store",
-      });
-      if (!res.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const products = await res.json();
-      console.log(products);
-      return products;
-    } catch (err: any) {
-      console.log(err.message);
-    }
-  };
-
-  const cartItems = await getCartItems();
+  const session = await getServerSession();
+  if (!session) redirect("login");
+  const cartItems = await getCartItems(session);
   if (!cartItems) return;
   return (
     <div className="lg:flex justify-center mt-5  gap-7">
