@@ -6,7 +6,6 @@ import vegImg from "@assets/veg-resturant.png";
 import HeroSection from "@components/hero-section/hero-section";
 import ProductCategory from "@/components/product-category/product-category";
 import Product from "@/database/models/ProductModel";
-import { connectToDB } from "@/database/database";
 import { ProductItemProps } from "./products/[productId]/page";
 
 async function getPopularProducts() {
