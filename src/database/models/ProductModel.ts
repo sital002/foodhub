@@ -13,7 +13,7 @@ const ProductSchmea = new mongoose.Schema({
     required: [true, "Price is reqiured"],
   },
   images: {
-    type:Array,
+    type: Array,
   },
   rating: {
     type: Number,
@@ -27,5 +27,5 @@ const ProductSchmea = new mongoose.Schema({
 
 // mongoose.models = {};
 
-const Product = mongoose.models.product || mongoose.model("product", ProductSchmea);
+const Product = mongoose.models.Product || mongoose.model("Product", ProductSchmea);
 export default Product;

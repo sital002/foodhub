@@ -19,14 +19,16 @@ const UserSchema = new mongoose.Schema({
   mobile: {
     type: Number,
   },
-  cart: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "product",
-  }],
+  cart: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "product",
+      ref: "Product",
     },
   ],
   createdAt: {
@@ -38,4 +40,4 @@ const UserSchema = new mongoose.Schema({
 UserSchema.methods.getCartItems = function () {
   return this.cart;
 };
-export const User = models.user || model("user", UserSchema);
+export const User = models.User || model("User", UserSchema);

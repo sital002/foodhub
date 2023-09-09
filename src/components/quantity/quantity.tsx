@@ -1,6 +1,7 @@
 "use client";
 
 import { ProductItemProps } from "@/app/products/[productId]/page";
+import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 
 interface QuantityProps {
@@ -10,7 +11,7 @@ interface QuantityProps {
 const Quantity: FC<QuantityProps> = ({ productId }) => {
   const MAX_LIMIT = 999;
   const MIN_LIMIT = 1;
-
+  const router = useRouter()
   async function addProductToCart(quantity: number) {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`, {
@@ -28,6 +29,8 @@ const Quantity: FC<QuantityProps> = ({ productId }) => {
       }
       const products = await res.json();
       console.log(products);
+      router.push('/cart');
+      router.refresh()
       return products;
     } catch (err: any) {
       console.log(err);

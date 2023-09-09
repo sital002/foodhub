@@ -41,7 +41,7 @@ export default async function Page() {
         <h2 className="text-2xl font-bold my-2 text-slate-600">
           Shop By Categories
         </h2>
-        <p className="text-gray-500">We've Got Something For Everyone</p>
+        <p className="text-gray-500"> We&apos;ve Got Something For Everyone</p>
         <CategoryCard
           title="Veg Resturant"
           img={vegImg}
