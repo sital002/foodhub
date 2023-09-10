@@ -2,11 +2,14 @@
 import Link from "next/link";
 import { useSession, signOut, signIn } from "next-auth/react";
 import Image from "next/image";
-
+import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
+  console.log(session);
+
 
   return (
     <>
@@ -29,12 +32,16 @@ const Navbar = () => {
               <div className="relative group">
                 <div className="cursor-pointer text-3xl ml-1">
                   <Link href={"/cart"}>
-                    <AiOutlineShoppingCart />
+                    <IconButton aria-label={"cart"}>
+                      <Badge badgeContent={0} color="secondary">
+                        <AiOutlineShoppingCart />
+                      </Badge>
+                    </IconButton>
                   </Link>
                 </div>
               </div>
               <Image
-                src={session.user?.image || ""}
+                src={session.user?.image|| ""}
                 className="w-7 h-7 rounded-full"
                 alt={session.user?.name || ""}
                 height={30}

@@ -4,6 +4,7 @@ import { connectToDB } from "@/database/database";
 import { User } from "@/database/models/UserModel";
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 
@@ -34,6 +35,7 @@ const Cart = async () => {
   const session = await getServerSession();
   if (!session) redirect("/login");
   const cartItems = await getCartItems(session);
+  if(!cartItems || cartItems.length === 0) return <h1 className="text-center text-2xl">No items in cart </h1>
   if (!cartItems) return;
   return (
     <div className="lg:flex justify-center mt-5  gap-7">
