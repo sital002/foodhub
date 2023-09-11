@@ -4,14 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-interface CartItemProps {
-  _id: string;
-  productName: string;
-  description: string;
-  price: number;
-  images: any;
-  quantity?: number;
-}
+
 
 const CartItem = ({
   _id,
@@ -20,7 +13,7 @@ const CartItem = ({
   price,
   images,
   quantity,
-}: CartItemProps) => {
+}: CartItem) => {
   const router = useRouter();
 
   const deleteCartItem = async () => {
