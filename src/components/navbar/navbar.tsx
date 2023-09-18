@@ -72,7 +72,7 @@ const Navbar = () => {
           )}
         </div>
       </nav>
-      <div className="mb-[9vh]"></div>
+      <div className="mb-[10vh]"></div>
     </>
   );
 };

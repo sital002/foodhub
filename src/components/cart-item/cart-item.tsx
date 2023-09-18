@@ -59,7 +59,7 @@ const CartItem = ({
           <p className="text-[9px]">-45%</p>
         </div>
 
-        <div className="border border-gray-300 px-3 w-fit  flex items-center">
+        {/* <div className="border border-gray-300 px-3 w-fit  flex items-center">
           <button className="text-center text-x text-gray-500 cursor-pointer">
             -
           </button>
@@ -70,7 +70,7 @@ const CartItem = ({
           <button className=" bg-white text-center  text-xl  text-gray-500 cursor-pointer">
             +
           </button>
-        </div>
+        </div> */}
         <RiDeleteBin5Line
           className="text-2xl cursor-pointer text-gray-500"
           onClick={deleteCartItem}
