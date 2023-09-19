@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const Checkout = () => {
   return (
     <div className=" min-w-[380px] shadow-lg shadow-gray-100 bg bg-gray-50 h-fit float-right rounded-md p-3">
@@ -22,9 +24,9 @@ const Checkout = () => {
         <p>Total</p>
         <p className="text-[18px] text-orange-500">Rs 0</p>
       </div>
-      <button className="bg-orange-500 text-white capitalize py-2 px-4 w-[350px] rounded-md">
+      <Link href="/checkout" className=" w-full bg-orange-500 text-white capitalize py-2 px-4 w-[350px] rounded-md">
         Proceed to CheckOut (0)
-      </button>
+      </Link>
     </div>
   );
 };
