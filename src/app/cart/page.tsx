@@ -46,7 +46,7 @@ const Cart = async () => {
             />
           ))}
       </div>
-      <Checkout />
+      <Checkout cartItems={cartItems} />
     </div>
   );
 };

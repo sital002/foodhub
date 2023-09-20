@@ -7,6 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
 export default function AddressForm() {
+  const [useDummyData,setUseDummyData] = React.useState(true);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -102,6 +103,12 @@ export default function AddressForm() {
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
             label="Use this address for payment details"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={<Checkbox color="secondary" name="saveAddress" value="yes" checked={useDummyData} onClick={()=>setUseDummyData(!useDummyData)} />}
+            label="Use the dummy details for testing"
           />
         </Grid>
       </Grid>
