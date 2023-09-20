@@ -47,12 +47,12 @@ const Navbar = () => {
                 height={30}
                 width={30}
               />
-              <button
+              {/* <button
                 onClick={() => signOut()}
                 className="bg-red-500 px-4 rounded-3xl text-white py-1 tracking-wider"
               >
                 Sign Out
-              </button>
+              </button> */}
             </div>
           ) : (
             <div className="flex justify-center items-center gap-3">

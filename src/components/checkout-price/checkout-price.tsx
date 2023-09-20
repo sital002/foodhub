@@ -1,14 +1,19 @@
-"use client";
 
 import Link from "next/link";
 
-const Checkout = () => {
+interface CheckoutProps {
+  cartItems: CartItem[];
+}
+
+const Checkout = ({cartItems}:CheckoutProps) => {
+  if(!cartItems) return;
+  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
   return (
-    <div className=" min-w-[380px] shadow-lg shadow-gray-100 bg bg-gray-50 h-fit float-right rounded-md p-3">
+    <div className="shadow-lg shadow-gray-100 bg bg-gray-50 rounded-md p-3">
       <p className="text-xl text-orange-500">Order Summery</p>
       <div className="flex justify-between my-4">
-        <p className="text-gray-500">Subtotal (0 items)</p>
-        <p>Rs 0</p>
+        <p className="text-gray-500">Subtotal ({cartItems.length} items)</p>
+        <p>NPR. {totalPrice}</p>
       </div>
       <div>
         <input
@@ -22,10 +27,10 @@ const Checkout = () => {
       </div>
       <div className="flex my-3 justify-between">
         <p>Total</p>
-        <p className="text-[18px] text-orange-500">Rs 0</p>
+        <p className="text-[18px] text-orange-500">NPR. {totalPrice}</p>
       </div>
-      <Link href="/checkout" className=" w-full bg-orange-500 text-white capitalize py-2 px-4 w-[350px] rounded-md">
-        Proceed to CheckOut (0)
+      <Link href="/checkout" className=" w-full bg-orange-500 text-white capitalize py-2 px-4 rounded-md">
+        Proceed to Checkout ({cartItems.length})
       </Link>
     </div>
   );

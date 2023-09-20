@@ -33,7 +33,7 @@ const CartItem = ({
   };
 
   return (
-    <div className="rounded-md flex mb-6  shadow-md shadow-gray-200 justify-between sm:px-5  md:px-16 lg:px-0 bg-white">
+    <div className="rounded-md flex mb-6 shadow-md shadow-gray-200 justify-between sm:px-5  md:px-16 lg:px-0 lg:w-[700px] bg-white">
       <Link href={`/products/${_id}`}>
         <div className="flex items-center p-3">
           <div className="flex items-center">
@@ -46,31 +46,28 @@ const CartItem = ({
               className="h-[30px] mx-2"
             />
           </div>
-          <div className="ml-5 text-[14px]">
-            <p className="text-gray-700 text-sm">{productName}</p>
-          </div>
+            <p className="text-gray-700 text-sm" >{productName}</p>
         </div>
       </Link>
 
-      <div className=" p-2 md:flex md:items-center gap-2 ">
+      <div className=" p-2 flex items-center gap-2 ">
         <div>
-          <p className="text-orange-500 text-[12px]">{price}</p>
-          <p className="text-gray-600 line-through text-[10px]">{price}</p>
+          <p className="text-orange-500 text-[12px]">NPR. {price}</p>
+          <p className="text-gray-600 line-through text-[10px]">NPR. {price}</p>
           <p className="text-[9px]">-45%</p>
         </div>
-
-        {/* <div className="border border-gray-300 px-3 w-fit  flex items-center">
+        <div className="border border-gray-300 px-3 w-20  h-10 flex items-center">
           <button className="text-center text-x text-gray-500 cursor-pointer">
             -
           </button>
           <input
             defaultValue={1}
-            className="mx-1 w-12 text-center px-1 py-2 text-gray-600 tracking-wider border-none outline-none "
+            className="mx-1 w-full h-full text-center px-1 py-2 text-gray-600 tracking-wider border-none outline-none "
           />
           <button className=" bg-white text-center  text-xl  text-gray-500 cursor-pointer">
             +
           </button>
-        </div> */}
+        </div> 
         <RiDeleteBin5Line
           className="text-2xl cursor-pointer text-gray-500"
           onClick={deleteCartItem}
