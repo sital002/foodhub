@@ -67,7 +67,7 @@ const CartItem = ({
           <button className=" bg-white text-center  text-xl  text-gray-500 cursor-pointer">
             +
           </button>
-        </div>
+        </div> 
         <RiDeleteBin5Line
           className="text-2xl cursor-pointer text-gray-500"
           onClick={deleteCartItem}

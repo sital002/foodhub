@@ -6,10 +6,8 @@ interface CheckoutProps {
 }
 
 const Checkout = ({cartItems}:CheckoutProps) => {
-  console.log(cartItems)
   if(!cartItems) return;
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
-
   return (
     <div className="shadow-lg shadow-gray-100 bg bg-gray-50 rounded-md p-3">
       <p className="text-xl text-orange-500">Order Summery</p>
