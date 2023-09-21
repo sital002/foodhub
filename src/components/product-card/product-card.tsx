@@ -32,9 +32,6 @@ const ProductCard = ({
         />
         <p className="px-2 py-1 text-gray-500">Baisnab Sweets</p>
         <p className="font-bold px-2  truncate ...">{productName}</p>
-        <p className="text-gray-500 text-md  truncate ...">
-          {description &&  description}
-        </p>
         <p className="px-2 py-1 font-bold text-red-500">NPR: {price}</p>
       </div>
     </Link>

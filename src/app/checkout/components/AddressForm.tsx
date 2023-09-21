@@ -1,117 +1,110 @@
 "use client";
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import { ChangeEvent, useState } from "react";
+import {shippingData} from "@/utils/DummyData";
 
-export default function AddressForm() {
-  const [useDummyData,setUseDummyData] = React.useState(true);
+interface AddressFormProps {
+  useDummyData: boolean;
+}
+
+
+const initialData = {
+  name: "",
+  address1: "",
+  address2: "",
+  city: "",
+  state: "",
+  zip: "",
+  country: "",
+  phone: "",
+  email: ""
+}
+export default function AddressForm({ useDummyData }: AddressFormProps) {
+  const [data, setData] = useState(useDummyData ? shippingData : initialData);
+  const handleChange = (event:ChangeEvent<HTMLInputElement>)=>{
+    if (useDummyData) return;
+      setData({
+        ...data,
+        [event.target.name]: event.target.value
+      });
+    
+  }
   return (
-    <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+    <div>
+      <p className="text-xl mb-2">
         Shipping address
-      </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="firstName"
-            name="firstName"
-            label="First name"
-            fullWidth
-            autoComplete="given-name"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="lastName"
-            name="lastName"
-            label="Last name"
-            fullWidth
-            autoComplete="family-name"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="address1"
-            name="address1"
-            label="Address line 1"
-            fullWidth
-            autoComplete="shipping address-line1"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="address2"
-            name="address2"
-            label="Address line 2"
-            fullWidth
-            autoComplete="shipping address-line2"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth
-            autoComplete="shipping address-level2"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
-            fullWidth
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
-            fullWidth
-            autoComplete="shipping postal-code"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="country"
-            name="country"
-            label="Country"
-            fullWidth
-            autoComplete="shipping country"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this address for payment details"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" checked={useDummyData} onClick={()=>setUseDummyData(!useDummyData)} />}
-            label="Use the dummy details for testing"
-          />
-        </Grid>
-      </Grid>
-    </React.Fragment>
+      </p>
+      <input
+        type="text"
+        placeholder="Enter full Name"
+        onChange={handleChange}
+        name="name"
+        value={data.name}
+        className="block px-2 py-2 border border-black mb-2 w-full"
+      />
+      <input
+        type="text"
+        placeholder="Address line 1"
+        onChange={handleChange}
+        name="address1"
+        value={data.address1}
+        className="block px-2 py-2 border border-black mb-2 w-full"
+      />
+      <input
+        type="text"
+        placeholder="Address line 2"
+        onChange={handleChange}
+        name="address2"
+        value={data.address2}
+        className="block px-2 py-2 border border-black mb-2 w-full"
+      />
+      <input
+        type="text"
+        placeholder="City"
+        onChange={handleChange}
+        name="city"
+        value={data.city}
+        className="block px-2 py-2 border border-black mb-2 w-full"
+      />
+      <input
+        type="text"
+        onChange={handleChange}
+        name="state"
+        value={data.state}
+        placeholder="State/Province/Region"
+        className="block px-2 py-2 border border-black mb-2 w-full"
+      />
+      <input
+        type="text"
+        onChange={handleChange}
+        name="zip"
+        value={data.zip}
+        placeholder="Zip / Postal code"
+        className="block px-2 py-2 border border-black mb-2 w-full"
+      />
+      <input
+        type="text"
+        onChange={handleChange}
+        name="country"
+        value={data.country}
+        placeholder="Country"
+        className="block px-2 py-2 border border-black mb-2 w-full"
+      />
+      <input
+        type="text"
+        onChange={handleChange}
+        name="phone"
+        value={data.phone}
+        placeholder="Phone Number"
+        className="block px-2 py-2 border border-black mb-2 w-full"
+      />
+      <input
+        type="text"
+        onChange={handleChange}
+        name="email"
+        value={data.email}
+        placeholder="Email"
+        className="block px-2 py-2 border border-black mb-2 w-full"
+      />
+    </div>
   );
 }

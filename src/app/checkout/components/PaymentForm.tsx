@@ -6,7 +6,11 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export default function PaymentForm() {
+interface PaymentFormProps {
+  useDummyData: boolean;
+}
+
+export default function PaymentForm({ useDummyData }: PaymentFormProps) {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
