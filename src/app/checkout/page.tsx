@@ -15,24 +15,25 @@ import Review from "./components/Review";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-
-export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [useDummyData, setUseDummyData] = React.useState(true);
-
-
-function getStepContent(step: number) {
-  switch (step) {
-    case 0:
-      return <AddressForm useDummyData = {useDummyData}/>;
-    case 1:
-      return <PaymentForm useDummyData = {useDummyData}/>;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error("Unknown step");
-  }
+interface CheckoutProps {
+  cartItems: CartItem[];
 }
+
+export default function Checkout({ cartItems }: CheckoutProps) {
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  function getStepContent(step: number) {
+    switch (step) {
+      case 0:
+        return <AddressForm />;
+      case 1:
+        return <PaymentForm />;
+      case 2:
+        return <Review cartItems={[]} />;
+      default:
+        throw new Error("Unknown step");
+    }
+  }
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -90,14 +91,7 @@ function getStepContent(step: number) {
               </Box>
             </React.Fragment>
           )}
-          <div
-            onClick={() => setUseDummyData((prev) => !prev)}
-            className="cursor-pointer"
-            >
-            <input type="checkbox" checked={useDummyData} className="mr-2" />
-            <span>Use dummy data for testing</span>
-          </div>
-            </Paper>
+        </Paper>
       </Container>
     </React.Fragment>
   );

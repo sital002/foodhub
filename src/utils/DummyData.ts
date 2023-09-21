@@ -1,6 +1,6 @@
 
- const shippingData = {
-    name:"John Doe",
+const shippingData = {
+    name: "John Doe",
     // firstName: 'John',
     // lastName: 'Doe',
     // address: '1234 Main St',
@@ -20,13 +20,15 @@
 }
 
 const paymentData = {
+    cardName: "John Doe",
     cardNumber: '4242424242424242',
     cardType: 'Visa',
+    expDate: "12/2022",
     expiryMonth: '12',
     expiryYear: '2022',
     cvv: '123',
 }
 
-export {shippingData, paymentData};
+export { shippingData, paymentData };
 
 

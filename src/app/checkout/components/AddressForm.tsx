@@ -1,11 +1,6 @@
 "use client";
-import { ChangeEvent, useState } from "react";
-import {shippingData} from "@/utils/DummyData";
-
-interface AddressFormProps {
-  useDummyData: boolean;
-}
-
+import { ChangeEvent, use, useEffect, useState } from "react";
+import { shippingData } from "@/utils/DummyData";
 
 const initialData = {
   name: "",
@@ -16,23 +11,30 @@ const initialData = {
   zip: "",
   country: "",
   phone: "",
-  email: ""
-}
-export default function AddressForm({ useDummyData }: AddressFormProps) {
+  email: "",
+};
+export default function AddressForm() {
+  const [useDummyData, setUseDummyData] = useState(true);
   const [data, setData] = useState(useDummyData ? shippingData : initialData);
-  const handleChange = (event:ChangeEvent<HTMLInputElement>)=>{
+
+  useEffect(() => {
+    if (useDummyData) {
+      setData(shippingData);
+    } else {
+      setData(initialData);
+    }
+  }, [useDummyData]);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (useDummyData) return;
-      setData({
-        ...data,
-        [event.target.name]: event.target.value
-      });
-    
-  }
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <div>
-      <p className="text-xl mb-2">
-        Shipping address
-      </p>
+      <p className="text-xl mb-2">Shipping address</p>
       <input
         type="text"
         placeholder="Enter full Name"
@@ -47,7 +49,7 @@ export default function AddressForm({ useDummyData }: AddressFormProps) {
         onChange={handleChange}
         name="address1"
         value={data.address1}
-        className="block px-2 py-2 border border-black mb-2 w-full"
+        className="inline-block px-2 py-2 border border-black mb-2 w-1/2"
       />
       <input
         type="text"
@@ -55,7 +57,7 @@ export default function AddressForm({ useDummyData }: AddressFormProps) {
         onChange={handleChange}
         name="address2"
         value={data.address2}
-        className="block px-2 py-2 border border-black mb-2 w-full"
+        className="inline-block px-2 py-2 border border-black mb-2 w-1/2 "
       />
       <input
         type="text"
@@ -105,6 +107,22 @@ export default function AddressForm({ useDummyData }: AddressFormProps) {
         placeholder="Email"
         className="block px-2 py-2 border border-black mb-2 w-full"
       />
+      <div
+        onClick={() => {
+          setUseDummyData((prev) => {
+            // if (prev) {
+            //   setData(initialData);
+            // } else {
+            //   setData(shippingData);
+            // }
+            return !prev;
+          });
+        }}
+        className="cursor-pointer"
+      >
+        <input type="checkbox" checked={useDummyData} className="mr-2" />
+        <span>Use dummy data for testing</span>
+      </div>
     </div>
   );
 }
