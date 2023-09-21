@@ -6,8 +6,6 @@ import { User } from "@/database/models/UserModel";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-
-
 interface User {
   name: string;
   image: string;
@@ -25,7 +23,7 @@ const getCartItems = async (session: any) => {
 };
 const Cart = async () => {
   const session = await getServerSession();
-  if (!session) redirect("/login");
+  if (!session) redirect("/signin");
   const cartItems = await getCartItems(session);
   if (!cartItems || cartItems.length === 0)
     return <h1 className="text-center text-2xl">No items in cart </h1>;
