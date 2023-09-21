@@ -15,11 +15,7 @@ import Review from "./components/Review";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-interface CheckoutProps {
-  cartItems: CartItem[];
-}
-
-export default function Checkout({ cartItems }: CheckoutProps) {
+export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
 
   function getStepContent(step: number) {
