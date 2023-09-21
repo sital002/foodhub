@@ -109,14 +109,7 @@ export default function AddressForm() {
       />
       <div
         onClick={() => {
-          setUseDummyData((prev) => {
-            // if (prev) {
-            //   setData(initialData);
-            // } else {
-            //   setData(shippingData);
-            // }
-            return !prev;
-          });
+          setUseDummyData((prev) => !prev);
         }}
         className="cursor-pointer"
       >
