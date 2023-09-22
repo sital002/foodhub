@@ -1,38 +1,43 @@
+"use client";
+
 import CartItem from "@/components/cart-item/cart-item";
-import Checkout from "@/components/checkout-price/checkout-price";
+import CheckoutComponent from "@/components/checkout-component/checkout-component";
 import ClearCartBtn from "@/components/clear-cart-btn/clear-cart-btn";
-import { connectToDB } from "@/database/database";
-import { User } from "@/database/models/UserModel";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
+import Checkout from "./components/checkout/Checkout";
 
-interface User {
-  name: string;
-  image: string;
-  email: string;
-  cart: CartItem[];
-}
+const Cart = () => {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [showCheckout, setShowCheckout] = useState(false);
 
-const getCartItems = async (session: any) => {
-  await connectToDB();
-  if (!session?.user?.email) return;
-  const data = (await User.findOne({ email: session?.user?.email }).populate(
-    "cart"
-  )) as User;
-  return data?.cart || [];
-};
-const Cart = async () => {
-  const session = await getServerSession();
-  if (!session) redirect("/signin");
-  const cartItems = await getCartItems(session);
+  useEffect(() => {
+    const getCartItems = async () => {
+      try {
+        const res = await fetch("/api/cart", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = (await res.json()) as CartItem[];
+        setCartItems(data);
+      } catch (err: unknown) {
+        console.log(err);
+        alert((err as Error).message);
+      }
+    };
+    getCartItems();
+  }, []);
+  console.log(cartItems);
   if (!cartItems || cartItems.length === 0)
     return <h1 className="text-center text-2xl">No items in cart </h1>;
-  if (!cartItems) return;
+
+  if (showCheckout) return <Checkout cartItems={cartItems} />;
   return (
     <div className="lg:flex justify-center mt-5  gap-7">
       <div className="bg-gray-50 px-7 rounded-md py-7 mb-4">
         <ClearCartBtn />
-        {cartItems &&
+        {cartItems.length > 0 &&
           cartItems.map((item: CartItem) => (
             <CartItem
               key={item._id.toString()}
@@ -44,7 +49,10 @@ const Cart = async () => {
             />
           ))}
       </div>
-      <Checkout cartItems={cartItems} />
+      <CheckoutComponent
+        cartItems={cartItems}
+        setShowCheckout={setShowCheckout}
+      />
     </div>
   );
 };

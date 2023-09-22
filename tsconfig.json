@@ -21,12 +21,18 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@components/*":["./src/components/*"],
-      "@assets/*":["./src/assets/*"],
-      "@utils/*":["./src/utils/*"],
-      "@models/*":["./src/database/models/*"],
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@models/*": ["./src/database/models/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/auth/[...nextauth]"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/api/auth/[...nextauth]"
+  ],
   "exclude": ["node_modules"]
 }
