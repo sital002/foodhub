@@ -4,8 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-
-
 const CartItem = ({
   _id,
   productName,
@@ -37,7 +35,6 @@ const CartItem = ({
       <Link href={`/products/${_id}`}>
         <div className="flex items-center p-3">
           <div className="flex items-center">
-            <input type="checkbox" />
             <Image
               src={images[0].secure_url}
               alt={productName}
@@ -46,7 +43,7 @@ const CartItem = ({
               className="h-[30px] mx-2"
             />
           </div>
-            <p className="text-gray-700 text-sm" >{productName}</p>
+          <p className="text-gray-700 text-sm truncate...">{productName}</p>
         </div>
       </Link>
 
@@ -67,7 +64,7 @@ const CartItem = ({
           <button className=" bg-white text-center  text-xl  text-gray-500 cursor-pointer">
             +
           </button>
-        </div> 
+        </div>
         <RiDeleteBin5Line
           className="text-2xl cursor-pointer text-gray-500"
           onClick={deleteCartItem}

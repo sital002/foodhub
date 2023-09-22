@@ -1,12 +1,12 @@
-
 import Link from "next/link";
 
 interface CheckoutProps {
   cartItems: CartItem[];
+  setShowCheckout: (value: boolean) => void;
 }
 
-const Checkout = ({cartItems}:CheckoutProps) => {
-  if(!cartItems) return;
+const CheckoutComponent = ({ cartItems, setShowCheckout }: CheckoutProps) => {
+  if (!cartItems) return;
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
   return (
     <div className="shadow-lg shadow-gray-100 bg bg-gray-50 rounded-md p-3">
@@ -29,11 +29,15 @@ const Checkout = ({cartItems}:CheckoutProps) => {
         <p>Total</p>
         <p className="text-[18px] text-orange-500">NPR. {totalPrice}</p>
       </div>
-      <Link href="/checkout" className=" w-full bg-orange-500 text-white capitalize py-2 px-4 rounded-md">
+
+      <button
+        className=" w-full bg-orange-500 text-white capitalize py-2 px-4 rounded-md"
+        onClick={() => setShowCheckout(true)}
+      >
         Proceed to Checkout ({cartItems.length})
-      </Link>
+      </button>
     </div>
   );
 };
 
-export default Checkout;
+export default CheckoutComponent;

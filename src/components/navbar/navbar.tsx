@@ -10,7 +10,6 @@ const Navbar = () => {
   const { data: session, status } = useSession();
   console.log(session);
 
-
   return (
     <>
       <nav className="flex justify-between items-center shadow-lg p-3 fixed top-0 w-full backdrop-blur-sm z-10 bg-white/90  h-auto">
@@ -41,7 +40,7 @@ const Navbar = () => {
                 </div>
               </div>
               <Image
-                src={session.user?.image|| ""}
+                src={session.user?.image || ""}
                 className="w-7 h-7 rounded-full"
                 alt={session.user?.name || ""}
                 height={30}

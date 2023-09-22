@@ -15,9 +15,12 @@ import Review from "./components/Review";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+interface CheckoutProps {
+  cartItems: CartItem[];
+}
 
+export default function Checkout({ cartItems }: CheckoutProps) {
+  const [activeStep, setActiveStep] = React.useState(0);
   function getStepContent(step: number) {
     switch (step) {
       case 0:
@@ -25,7 +28,7 @@ export default function Checkout() {
       case 1:
         return <PaymentForm />;
       case 2:
-        return <Review cartItems={[]} />;
+        return <Review cartItems={cartItems} />;
       default:
         throw new Error("Unknown step");
     }

@@ -45,6 +45,16 @@ export default function Review({ cartItems }: ReviewProps) {
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
+      <div>
+        {cartItems.map((item) => (
+          <div key={item._id}>
+            <p>
+              {item.productName}
+              <span className="ml-2 text-red-500">NPR. {item.price}</span>
+            </p>
+          </div>
+        ))}
+      </div>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>

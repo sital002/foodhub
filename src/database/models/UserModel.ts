@@ -1,6 +1,20 @@
-import mongoose, { models, model } from "mongoose";
+import { Document, Model, model, models, Schema } from "mongoose";
 
-const UserSchema = new mongoose.Schema({
+interface IUser extends Document {
+  name: string;
+  email: string;
+  role: string;
+  profile: {
+    url: string;
+  };
+  mobile: number;
+  cart: Array<Schema.Types.ObjectId>;
+  orders: Array<Schema.Types.ObjectId>;
+  createdAt: Date;
+  getCartItems: () => Promise<Array<Schema.Types.ObjectId>>;
+}
+
+const UserSchema: Schema = new Schema({
   name: {
     type: String,
     required: [true, "Name is required"],
@@ -21,13 +35,13 @@ const UserSchema = new mongoose.Schema({
   },
   cart: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Product",
     },
   ],
   orders: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Product",
     },
   ],
@@ -37,7 +51,8 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-UserSchema.methods.getCartItems = function () {
-  return this.cart;
+UserSchema.methods.getCartItems = async function () {
+  return this.populate("cart");
 };
-export const User = models.User || model("User", UserSchema);
+
+export const User: Model<IUser> = models.User || model<IUser>("User", UserSchema);

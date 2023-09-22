@@ -10,10 +10,11 @@ export async function DELETE() {
     await connectToDB();
     const user = await User.findOne({ email: data?.user?.email });
     console.log(user);
+    if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
     user.cart = [];
     await user.save();
     return NextResponse.json({ message: "Cart cleared" }, { status: 200 });
-    
+
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
