@@ -15,9 +15,9 @@ const CheckoutComponent = ({ cartItems, setShowCheckout }: CheckoutProps) => {
         <p className="text-gray-500">Subtotal ({cartItems.length} items)</p>
         <p>NPR. {totalPrice}</p>
       </div>
-      <div>
+      <div className="flex">
         <input
-          className="h-9 w-[250px] bg-white rounded-md pl-3 border border-gray-300 outline-none"
+          className="h-9 w-full bg-white rounded-md pl-3 border border-gray-300 outline-none"
           type="text"
           placeholder="Enter Coupen Code"
         />
