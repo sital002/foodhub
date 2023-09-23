@@ -27,11 +27,9 @@ const Cart = () => {
       }
     };
     getCartItems();
-  }, []);
-  console.log(cartItems);
+  }, [cartItems]);
   if (!cartItems || cartItems.length === 0)
     return <h1 className="text-center text-2xl">No items in cart </h1>;
-
   if (showCheckout) return <Checkout cartItems={cartItems} />;
   return (
     <div className="lg:flex justify-center mt-5  gap-7">

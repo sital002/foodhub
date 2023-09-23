@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import AddressForm from "./components/AddressForm";
 import PaymentForm from "./components/PaymentForm";
 import Review from "./components/Review";
+import Link from "next/link";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
@@ -69,6 +70,9 @@ export default function Checkout({ cartItems }: CheckoutProps) {
                 confirmation, and will send you an update when your order has
                 shipped.
               </Typography>
+              <Link href={"/"} className="underline">
+                Go to homepage
+              </Link>
             </React.Fragment>
           ) : (
             <React.Fragment>
