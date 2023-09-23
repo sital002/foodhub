@@ -5,10 +5,19 @@ import Image from "next/image";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
-  console.log(session);
+  const [search, setSearch] = useState("");
+  const router = useRouter();
+
+  const hanleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (search.trim() === "") return;
+    router.push(`/search?query=${search}`);
+  };
 
   return (
     <>
@@ -19,11 +28,15 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="max-w-md w-full mx-1 ">
-          <input
-            type="text"
-            className="px-4 py-2 w-full rounded-3xl bg-gray-100 border-2 border-black h-full"
-            placeholder="Search Products"
-          />
+          <form onSubmit={hanleSubmit}>
+            <input
+              type="text"
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+              className="px-4 py-2 w-full rounded-3xl bg-gray-100 border-2 border-black h-full"
+              placeholder="Search Products"
+            />
+          </form>
         </div>
         <div>
           {status === "authenticated" ? (
