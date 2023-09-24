@@ -35,10 +35,8 @@
     "react-icons": "^4.10.1",
     "react-loading-skeleton": "^3.3.1",
     "react-responsive-carousel": "^3.2.23",
-    "react-uploader": "^3.38.0",
     "sharp": "^0.32.4",
     "tailwindcss": "3.3.2",
-    "typescript": "^5.1.6",
-    "upload-js-full": "^2.21.0"
+    "typescript": "^5.1.6"
   }
 }

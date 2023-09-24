@@ -66,14 +66,14 @@ export async function DELETE(request: NextRequest) {
     await connectToDB();
     const data = await getServerSession();
     if (!data) return NextResponse.json({ message: "Not authenticated" }, { status: 401 })
-    const user = await User.findOne({ email: data?.user?.email });
+    const user = await User.findOne({ email: data?.user?.email }).populate("cart");
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 })
-    const index = user.cart.indexOf(productId);
+    const index = user.cart.findIndex((item: any) => item._id.toString() === productId);
     if (index > -1) {
       user.cart.splice(index, 1);
     }
     await user.save();
-    return NextResponse.json(user, { status: 200 });
+    return NextResponse.json(user.cart, { status: 200 });
   }
   catch (err: any) {
     console.log(err.message);

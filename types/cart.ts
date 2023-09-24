@@ -5,4 +5,5 @@ interface CartItem {
   price: number;
   images: any;
   quantity?: number;
+  setCartItems?: any;
 }

@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {
     const query = request.nextUrl.searchParams;
-    const searchQuery = query.get("query") || "";
+    const searchQuery = query.get("query");
     if (!searchQuery) {
         return NextResponse.json({ message: "No search query" }, { status: 400 });
     }
@@ -15,7 +15,7 @@ export const GET = async (request: NextRequest) => {
                 {
                     $match: {
                         $or: [
-                            { productName: { $regex: searchQuery, $options: "i" } },
+                            { productName: { $regex: searchQuery, $options: "i", } },
                             { description: { $regex: searchQuery, $options: "i" } },
                         ],
                     },
