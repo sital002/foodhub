@@ -4,6 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
+interface CartItemProps extends CartItem {
+  setCartItems: (value: CartItem[]) => void;
+}
+
 const CartItem = ({
   _id,
   productName,
@@ -11,7 +15,8 @@ const CartItem = ({
   price,
   images,
   quantity,
-}: CartItem) => {
+  setCartItems,
+}: CartItemProps) => {
   const router = useRouter();
 
   const deleteCartItem = async () => {
@@ -28,16 +33,16 @@ const CartItem = ({
       throw new Error("Failed to fetch data");
     }
     const data = await res.json();
-    router.refresh();
+    setCartItems(data);
   };
 
   return (
-    <div className="rounded-md flex mb-6 shadow-md shadow-gray-200 justify-between sm:px-5  md:px-16 lg:px-0 lg:w-[700px] bg-white">
+    <div className="rounded-md flex mb-6  px-2 shadow-md shadow-gray-200 justify-between lg:w-[700px] bg-white">
       <Link href={`/products/${_id}`}>
         <div className="flex items-center p-3">
           <div className="flex items-center">
             <Image
-              src={images[0].secure_url}
+              src={images[0]?.secure_url}
               alt={productName}
               width={50}
               height={50}

@@ -16,9 +16,7 @@ export default function Page() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const getFormData: SubmitHandler<FormData> = (data) => {
-    console.log(data);
-  };
+  const getFormData: SubmitHandler<FormData> = (data) => {};
 
   return (
     <>

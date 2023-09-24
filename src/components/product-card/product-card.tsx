@@ -26,7 +26,7 @@ const ProductCard = ({
         <Image
           src={images[0]?.secure_url || vegImg}
           alt={alt || ""}
-          className="w-60 mx-auto h-48"
+          className="w-full mx-auto h-48"
           height={180}
           width={180}
         />

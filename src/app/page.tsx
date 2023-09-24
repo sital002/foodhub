@@ -5,13 +5,10 @@ import nonVegImg from "@assets/non-veg-resturant.png";
 import vegImg from "@assets/veg-resturant.png";
 import HeroSection from "@components/hero-section/hero-section";
 import ProductCategory from "@/components/product-category/product-category";
-import Product from "@/database/models/ProductModel";
 import { ProductItemProps } from "./products/[productId]/page";
 
 async function getPopularProducts() {
   try {
-    // await connectToDB();
-    // const products = (await Product.find().limit(8)) as ProductItemProps[];
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/products`,
       {
@@ -20,7 +17,6 @@ async function getPopularProducts() {
       }
     );
     if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
       throw new Error("Failed to fetch data");
     }
     const products = (await res.json()) as ProductItemProps[];

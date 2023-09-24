@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-between items-center shadow-lg p-3 fixed top-0 w-full backdrop-blur-sm z-10 bg-white/90  h-auto">
+      <nav className="flex justify-between items-center shadow-lg p-3 w-full backdrop-blur-sm z-10 bg-white/90  h-auto">
         <div>
           <Link href="/">
             <span>FoodHub</span>
@@ -84,7 +84,6 @@ const Navbar = () => {
           )}
         </div>
       </nav>
-      <div className="mb-[10vh]"></div>
     </>
   );
 };
