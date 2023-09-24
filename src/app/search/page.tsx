@@ -21,7 +21,6 @@ export default function SearchPage() {
           `/api/search?query=${searchParams.get("query")}`
         );
         const data = await res.json();
-        console.log(data);
         setFilteredData(data.filteredItem);
         setLoading(false);
       } catch (err) {

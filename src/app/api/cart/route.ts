@@ -11,7 +11,6 @@ interface CartItem {
 
 export async function GET() {
   try {
-    console.log("get cart");
     await connectToDB();
     const data = await getServerSession();
     if (!data)
@@ -20,15 +19,12 @@ export async function GET() {
         { status: 401 }
       );
     const user = await User.findOne({ email: data?.user?.email }).populate("cart");
-    console.log("The user is ", user)
     if (!user)
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     // const cartItems = await user.getCartItems();
     const cartItems = user.cart;
-    console.log("cart items", cartItems);
     return NextResponse.json(cartItems, { status: 200 });
   } catch (err: any) {
-    // console.log(err.message);
     return NextResponse.json({ message: err.message }, { status: 500 });
   }
 }

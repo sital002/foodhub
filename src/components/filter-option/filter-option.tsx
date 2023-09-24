@@ -6,9 +6,6 @@ import { useState } from "react";
 // import "react-range-slider-input/dist/style.css";
 
 function FilterOptions() {
-  // const [value, setValue] = useState(0);
-  // console.log(value);
-
   return (
     <div className="block sm:hidden lg:block">
       <div className="my-3">

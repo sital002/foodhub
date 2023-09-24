@@ -27,9 +27,8 @@ const Quantity: FC<QuantityProps> = ({ productId }) => {
         throw new Error("Failed to fetch data");
       }
       const products = await res.json();
-      console.log(products);
-      router.push('/cart');
-      router.refresh()
+      router.push("/cart");
+      router.refresh();
       return products;
     } catch (err: any) {
       console.log(err);
@@ -38,7 +37,6 @@ const Quantity: FC<QuantityProps> = ({ productId }) => {
 
   const [quantity, setQuantity] = useState<number>(1);
   const handleSubmit = () => {
-    console.log(quantity);
     addProductToCart(quantity);
   };
   return (

@@ -21,7 +21,6 @@ const NewProuctForm = () => {
   } = useForm<FormData>();
 
   const getFormData: SubmitHandler<FormData> = async (data) => {
-    console.log(data);
     const formData = new FormData();
     formData.append("file", data.products[0]);
     formData.append(
@@ -35,7 +34,6 @@ const NewProuctForm = () => {
       res
         .json()
         .then((cloudinaryImg) => {
-          console.log(cloudinaryImg);
           setImages((prev) => [...prev, cloudinaryImg.secure_url]);
           addNewProduct(cloudinaryImg);
         })
@@ -57,7 +55,6 @@ const NewProuctForm = () => {
       const result = await res.json();
       router.refresh();
       router.push("/");
-      console.log(result);
     }
   };
 

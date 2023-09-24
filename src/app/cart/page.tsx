@@ -5,7 +5,6 @@ import CheckoutComponent from "@/components/checkout-component/checkout-componen
 import ClearCartBtn from "@/components/clear-cart-btn/clear-cart-btn";
 import { useEffect, useState } from "react";
 import Checkout from "./components/checkout/Checkout";
-import Loading from "./loading";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
