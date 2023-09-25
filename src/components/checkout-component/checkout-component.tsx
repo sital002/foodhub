@@ -1,6 +1,6 @@
 "use client";
 interface CheckoutProps {
-  cartItems: CartItem[];
+  cartItems?: CartItem[];
   setShowCheckout: (value: boolean) => void;
 }
 

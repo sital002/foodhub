@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 interface CartItemProps extends CartItem {
@@ -17,8 +16,6 @@ const CartItem = ({
   quantity,
   setCartItems,
 }: CartItemProps) => {
-  const router = useRouter();
-
   const deleteCartItem = async () => {
     const res = await fetch("/api/cart", {
       method: "DELETE",
