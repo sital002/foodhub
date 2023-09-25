@@ -1,9 +1,4 @@
 "use client";
-import { useState } from "react";
-
-// npm install --save-dev @types/react-range-slider-input
-// import RangeSlider from "react-range-slider-input";
-// import "react-range-slider-input/dist/style.css";
 
 function FilterOptions() {
   return (
