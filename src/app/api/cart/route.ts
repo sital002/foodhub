@@ -21,7 +21,6 @@ export async function GET() {
     const user = await User.findOne({ email: data?.user?.email }).populate("cart");
     if (!user)
       return NextResponse.json({ message: "User not found" }, { status: 404 });
-    // const cartItems = await user.getCartItems();
     const cartItems = user.cart;
     return NextResponse.json(cartItems, { status: 200 });
   } catch (err: any) {
