@@ -5,13 +5,16 @@ import CheckoutComponent from "@/components/checkout-component/checkout-componen
 import ClearCartBtn from "@/components/clear-cart-btn/clear-cart-btn";
 import { useEffect, useState } from "react";
 import Checkout from "./components/checkout/Checkout";
+import CartSkeleton from "@/utils/CartSkeleton";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [showCheckout, setShowCheckout] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getCartItems = async () => {
+      setLoading(true);
       try {
         const res = await fetch("/api/cart", {
           method: "GET",
@@ -21,17 +24,25 @@ const Cart = () => {
         });
         const data = (await res.json()) as CartItem[];
         setCartItems(data);
+        setLoading(false);
       } catch (err: any) {
+        setLoading(false);
         console.trace(err);
       }
     };
     getCartItems();
   }, []);
   if (showCheckout) return <Checkout cartItems={cartItems} />;
+
   return (
     <div className="lg:flex justify-center mt-5  gap-7  max-h-[600px] overflow-y-scroll">
       <div className="bg-gray-50 px-7 rounded-md py-7 mb-4">
-        <ClearCartBtn />
+        {loading ? (
+          new Array(4).fill(0).map((_, i) => <CartSkeleton key={i} />)
+        ) : (
+          <ClearCartBtn />
+        )}
+
         {cartItems.length > 0 &&
           cartItems.map((item: CartItem) => (
             <CartItem
