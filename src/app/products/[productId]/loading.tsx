@@ -8,7 +8,7 @@ export default function Loading() {
       <Wrapper>
         <div
           role="status"
-          className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex"
+          className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex items-center"
         >
           <div className="flex items-center justify-center w-full h-80 bg-gray-300 rounded dark:bg-gray-400">
             <svg
@@ -25,9 +25,12 @@ export default function Loading() {
             <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-500 max-w-[480px] mb-2.5"></div>
             <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-48 mb-4"></div>
             <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-20 mb-4"></div>
+            <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-500 max-w-[480px] mb-2.5"></div>
+            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-20 mb-4"></div>
           </div>
           <span className="sr-only">Loading...</span>
         </div>
+        <p className="text-3xl my-3">You might also like:</p>
         <div className="grid grid-cols-2 gap-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {new Array(8).fill(0).map((_, i) => (
             <LoadingSkeleton key={i} />

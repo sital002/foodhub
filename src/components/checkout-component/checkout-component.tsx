@@ -5,13 +5,12 @@ interface CheckoutProps {
 }
 
 const CheckoutComponent = ({ cartItems, setShowCheckout }: CheckoutProps) => {
-  if (!cartItems) return;
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const totalPrice = cartItems?.reduce((acc, item) => acc + item.price, 0);
   return (
     <div className="shadow-lg shadow-gray-100 bg bg-gray-50 rounded-md p-3">
       <p className="text-xl text-orange-500">Order Summery</p>
       <div className="flex justify-between my-4">
-        <p className="text-gray-500">Subtotal ({cartItems.length} items)</p>
+        <p className="text-gray-500">Subtotal ({cartItems?.length} items)</p>
         <p>NPR. {totalPrice}</p>
       </div>
       <div className="flex">
@@ -33,7 +32,7 @@ const CheckoutComponent = ({ cartItems, setShowCheckout }: CheckoutProps) => {
         className=" w-full bg-orange-500 text-white capitalize py-2 px-4 rounded-md"
         onClick={() => setShowCheckout(true)}
       >
-        Proceed to Checkout ({cartItems.length})
+        Proceed to Checkout ({cartItems?.length})
       </button>
     </div>
   );

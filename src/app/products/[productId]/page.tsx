@@ -4,7 +4,6 @@ import Quantity from "@/components/quantity/quantity";
 import ProductCategory from "@/components/product-category/product-category";
 import { connectToDB } from "@/database/database";
 import ImageHolder from "@/components/image-holder/image-holder";
-import Loading from "./loading";
 
 export interface ProductItemProps {
   _id: string;
