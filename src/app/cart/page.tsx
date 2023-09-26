@@ -23,6 +23,7 @@ const Cart = () => {
           },
         });
         const data = (await res.json()) as CartItem[];
+        console.log(data);
         setCartItems(data);
         setLoading(false);
       } catch (err: any) {
