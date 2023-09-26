@@ -1,6 +1,6 @@
 "use client";
 interface CheckoutProps {
-  cartItems?: CartItem[];
+  cartItems: CartItem[];
   setShowCheckout: (value: boolean) => void;
 }
 
@@ -10,7 +10,7 @@ const CheckoutComponent = ({ cartItems, setShowCheckout }: CheckoutProps) => {
     <div className="shadow-lg shadow-gray-100 bg bg-gray-50 rounded-md p-3">
       <p className="text-xl text-orange-500">Order Summery</p>
       <div className="flex justify-between my-4">
-        <p className="text-gray-500">Subtotal ({cartItems?.length} items)</p>
+        <p className="text-gray-500">Subtotal ({cartItems.length} items)</p>
         <p>NPR. {totalPrice}</p>
       </div>
       <div className="flex">

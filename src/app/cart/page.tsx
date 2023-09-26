@@ -1,7 +1,7 @@
 "use client";
 
 import CartItem from "@/components/cart-item/cart-item";
-import CheckoutComponent from "@/components/checkout-component/checkout-component";
+// import CheckoutComponent from "@/components/checkout-component/checkout-component";
 import ClearCartBtn from "@/components/clear-cart-btn/clear-cart-btn";
 import { useEffect, useState } from "react";
 import Checkout from "./components/checkout/Checkout";
@@ -56,10 +56,10 @@ const Cart = () => {
             />
           ))}
       </div>
-      <CheckoutComponent
+      {/* <CheckoutComponent
         cartItems={cartItems}
         setShowCheckout={setShowCheckout}
-      />
+      /> */}
     </div>
   );
 };
