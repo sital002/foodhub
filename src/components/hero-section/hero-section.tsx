@@ -2,21 +2,22 @@
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import heroSectionImg from "@assets/hero-section-image.png";
+import homeImg from "@assets/2.png";
+import services from "@assets/1.png";
 
 const HeroSection = () => {
   return (
     <Carousel
       autoPlay={true}
-      className="my-2"
+      className="my-2 "
       showThumbs={false}
       showStatus={false}
     >
       <>
-        <Image src={heroSectionImg} width={500} height={500} alt="Food Hub" />
+        <Image src={homeImg} width={500} height={500} alt="Food Hub" />
       </>
       <>
-        <Image src={heroSectionImg} width={500} height={500} alt="Food Hub" />
+        <Image src={services} width={500} height={500} alt="Food Hub" />
       </>
     </Carousel>
   );
