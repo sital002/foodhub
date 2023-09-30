@@ -14,10 +14,10 @@ const HeroSection = () => {
       showStatus={false}
     >
       <>
-        <Image src={homeImg} width={500} height={500} alt="Food Hub" />
+        <Image src={homeImg} width={1900} height={700} alt="Food Hub" />
       </>
       <>
-        <Image src={services} width={500} height={500} alt="Food Hub" />
+        <Image src={services} width={1900} height={700} alt="Food Hub" />
       </>
     </Carousel>
   );

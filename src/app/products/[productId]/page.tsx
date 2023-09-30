@@ -49,7 +49,7 @@ export default async function Page({
             {product.productName}
           </h1>
           <p className="text-gray-50 bg-sky-700 w-fit px-2 my-3 rounded-3xl md:my-5 cursor-pointer">
-            Baishnab Sweets
+            Foodhub
           </p>
           <p className="max-w-lg">{product?.description}</p>
           <p className="text-rose-500 my-3  md:my-5">NPR. {product.price}</p>
