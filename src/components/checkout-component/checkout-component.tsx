@@ -6,35 +6,21 @@ interface CheckoutProps {
 
 const CheckoutComponent = ({ cartItems, setShowCheckout }: CheckoutProps) => {
   const totalPrice = cartItems?.reduce((acc, item) => acc + item.price, 0);
+
   return (
-    <div className="shadow-lg shadow-gray-100 bg bg-gray-50 rounded-md p-3">
-      <p className="text-xl text-orange-500">Order Summery</p>
-      <div className="flex justify-between my-4">
-        <p className="text-gray-500">Subtotal ({cartItems.length} items)</p>
-        <p>NPR. {totalPrice}</p>
-      </div>
-      <div className="flex">
-        <input
-          className="h-9 w-full bg-white rounded-md pl-3 border border-gray-300 outline-none"
-          type="text"
-          placeholder="Enter Coupen Code"
-        />
-        <button className="bg-sky-600 text-white px-7 py-1 rounded-md ml-1 cursor-pointer">
-          Apply
+    <>
+      <div className="flex justify-between items-baseline">
+        <p className="text-3xl text-slate-700">
+          Subtotal: <span className="text-red-500">{totalPrice}</span>
+        </p>
+        <button
+          className="bg-red-500 text-slate-50 px-3 py-2 rounded-full uppercase textxl font-bold"
+          onClick={() => setShowCheckout(true)}
+        >
+          Proceed to Checkout
         </button>
       </div>
-      <div className="flex my-3 justify-between">
-        <p>Total</p>
-        <p className="text-[18px] text-orange-500">NPR. {totalPrice}</p>
-      </div>
-
-      <button
-        className=" w-full bg-orange-500 text-white capitalize py-2 px-4 rounded-md"
-        onClick={() => setShowCheckout(true)}
-      >
-        Proceed to Checkout ({cartItems?.length})
-      </button>
-    </div>
+    </>
   );
 };
 
